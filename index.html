@@ -489,6 +489,7 @@ footer .logo-text{font-size:1.2rem;font-weight:800;background:var(--g1);-webkit-
 .dp-rpt-cur-dot{width:6px;height:6px;border-radius:50%;background:#6366f1;flex-shrink:0}
 .dp-rpt-pdf{background:linear-gradient(135deg,#4f46e5,#7c3aed);border:none;color:#fff;padding:6px 14px;border-radius:7px;font-size:.73rem;font-weight:600;cursor:pointer;transition:opacity .15s}
 .dp-rpt-pdf:hover{opacity:.85}
+
 </style>
 </head>
 <body>
@@ -500,7 +501,8 @@ footer .logo-text{font-size:1.2rem;font-weight:800;background:var(--g1);-webkit-
     <span>AI Horizon Matrix</span>
   </div>
   <ul class="nav-menu">
-    <li><a href="#rankings">排行榜</a></li>
+    <li><a href="index.html" class="active">排行榜</a></li>
+    <li><a href="insights.html">行业洞察</a></li>
   </ul>
   <button class="nav-cta">申请早期访问</button>
 </nav>
@@ -8566,6 +8568,7 @@ footer .logo-text{font-size:1.2rem;font-weight:800;background:var(--g1);-webkit-
   </div>
 </section>
 
+
 <!-- FOOTER -->
 <footer>
   <div class="logo-text">AI Horizon Matrix</div>
@@ -8626,19 +8629,6 @@ window.addEventListener('load',()=>{
   });
 });
 
-// Smooth nav active state
-const sections=document.querySelectorAll('section[id],div[id]');
-const navLinks=document.querySelectorAll('.nav-menu a');
-window.addEventListener('scroll',()=>{
-  let cur='';
-  sections.forEach(s=>{
-    if(window.scrollY>=s.offsetTop-100)cur=s.id;
-  });
-  navLinks.forEach(a=>{
-    a.classList.remove('active');
-    if(a.getAttribute('href')==='#'+cur)a.classList.add('active');
-  });
-});
 
 // ── PRODUCT DETAIL DRAWER ──
 (function(){
@@ -10153,6 +10143,8 @@ window.downloadReport   = downloadReport;
   </div>
   <div class="drawer-body" id="drawerBody"></div>
 </aside>
+
+
 
 </body>
 </html>

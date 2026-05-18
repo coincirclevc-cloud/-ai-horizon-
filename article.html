@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>文章详情 — AI Horizon Matrix</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#060612;--bg2:#0d0d1f;--bg3:#12122a;
+  --accent:#6366f1;--accent2:#8b5cf6;--accent3:#06b6d4;
+  --gold:#f59e0b;--green:#10b981;--red:#ef4444;
+  --text:#e2e8f0;--muted:#64748b;--muted2:#94a3b8;
+  --border:rgba(99,102,241,0.2);--card:rgba(13,13,31,0.8);
+  --g1:linear-gradient(135deg,#6366f1,#8b5cf6);
+  --g2:linear-gradient(135deg,#06b6d4,#6366f1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'PingFang SC','Microsoft YaHei',-apple-system,sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(6,6,18,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.nav-logo-box{width:28px;height:28px;background:var(--g1);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.nav-brand-text{font-size:14px;font-weight:700;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-back{display:flex;align-items:center;gap:6px;color:var(--muted2);font-size:13px;text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-back:hover{color:#a5b4fc}
+.nav-back-arrow{font-size:16px;line-height:1}
+.nav-actions{display:flex;gap:8px;flex-shrink:0}
+.nav-btn{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;text-decoration:none}
+.nav-btn:hover{border-color:#6366f1;color:#a5b4fc;background:rgba(99,102,241,.1)}
+.nav-btn.saved{border-color:#f59e0b;color:#f59e0b;background:rgba(245,158,11,.1)}
+.nav-btn.copied{border-color:#10b981;color:#10b981}
+
+/* READING PROGRESS BAR */
+.progress-bar{position:fixed;top:60px;left:0;width:0%;height:3px;background:var(--g1);z-index:998;transition:width .1s linear}
+
+/* MAIN */
+main{max-width:720px;margin:0 auto;padding:100px 24px 80px}
+
+/* COVER */
+.art-cover{height:200px;border-radius:16px;overflow:hidden;position:relative;margin-bottom:32px}
+.art-cover-bg{width:100%;height:100%}
+.art-cover-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,var(--bg))}
+.art-cover-badges{position:absolute;bottom:16px;left:20px;display:flex;gap:8px}
+.badge{padding:4px 12px;border-radius:12px;font-size:12px;font-weight:600}
+.badge-overseas{background:rgba(6,182,212,.2);border:1px solid rgba(6,182,212,.5);color:#22d3ee}
+.badge-domestic{background:rgba(16,185,129,.2);border:1px solid rgba(16,185,129,.5);color:#34d399}
+.badge-topic{font-size:12px;padding:4px 12px;border-radius:12px;font-weight:600}
+.badge-featured{background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:700}
+
+/* META */
+.art-meta{margin-bottom:24px}
+.art-title{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800;color:#e0e7ff;line-height:1.35;margin-bottom:10px}
+.art-title-orig{font-size:.85rem;color:var(--muted);font-style:italic;margin-bottom:16px;line-height:1.5}
+.art-byline{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.83rem;color:var(--muted)}
+.byline-sep{color:var(--border)}
+.art-read-time{display:inline-flex;align-items:center;gap:4px;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.25);border-radius:10px;padding:3px 10px;font-size:11px;color:#a5b4fc}
+
+/* DIVIDER */
+.art-divider{height:1px;background:var(--border);margin:28px 0}
+
+/* KEY POINTS */
+.section-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#6366f1;font-weight:700;margin-bottom:16px}
+.key-points{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:4px}
+.key-points li{display:flex;gap:14px;align-items:flex-start}
+.kp-marker{width:24px;height:24px;border-radius:50%;background:rgba(99,102,241,.18);border:1px solid rgba(99,102,241,.4);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#a5b4fc;flex-shrink:0;margin-top:1px}
+.kp-text{font-size:.95rem;color:var(--text);line-height:1.7}
+
+/* SUMMARY */
+.art-summary-text{font-size:.98rem;color:var(--muted2);line-height:1.9}
+
+/* ORIG CTA */
+.orig-cta{display:block;width:100%;padding:14px;border-radius:14px;background:var(--g1);color:#fff;font-size:.95rem;font-weight:700;text-align:center;text-decoration:none;border:none;cursor:pointer;transition:opacity .2s,transform .2s;letter-spacing:.3px}
+.orig-cta:hover{opacity:.88;transform:translateY(-1px)}
+.orig-cta-note{text-align:center;font-size:.75rem;color:var(--muted);margin-top:8px}
+
+/* RELATED ARTICLES */
+.related-grid{display:flex;flex-direction:column;gap:12px}
+.rel-card{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:12px;border:1px solid var(--border);cursor:pointer;text-decoration:none;transition:border-color .2s,background .2s}
+.rel-card:hover{border-color:rgba(99,102,241,.5);background:rgba(99,102,241,.05)}
+.rel-cover{width:52px;height:52px;border-radius:10px;flex-shrink:0}
+.rel-body{flex:1;min-width:0}
+.rel-topic{font-size:11px;font-weight:600;margin-bottom:4px}
+.rel-title{font-size:.83rem;font-weight:700;color:#e0e7ff;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px}
+.rel-meta{font-size:.75rem;color:var(--muted)}
+
+/* FOOTER */
+footer{text-align:center;padding:40px 24px 32px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;margin-top:0}
+footer .logo-text{font-size:1rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+
+/* NOT FOUND */
+.not-found{text-align:center;padding:120px 24px 60px;color:var(--muted)}
+.not-found h2{font-size:1.4rem;margin-bottom:10px;color:#e0e7ff}
+.not-found p{margin-bottom:24px;line-height:1.7}
+.not-found a{color:#a5b4fc;text-decoration:none}
+
+@media(max-width:640px){
+  nav{padding:0 16px}
+  main{padding:80px 16px 60px}
+  .art-cover{height:150px}
+}
+</style>
+</head>
+<body>
+
+<!-- READING PROGRESS -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo-box">🌐</div>
+    <span class="nav-brand-text">AI Horizon Matrix</span>
+  </a>
+  <a class="nav-back" href="insights.html" id="backBtn">
+    <span class="nav-back-arrow">←</span>
+    <span>行业洞察</span>
+  </a>
+  <div class="nav-actions">
+    <button class="nav-btn" id="saveBtn" title="收藏" onclick="toggleSave()">🔖</button>
+    <button class="nav-btn" id="shareBtn" title="复制链接" onclick="shareArticle()">⬡</button>
+    <a class="nav-btn" id="origBtn" title="阅读原文" href="#" target="_blank" rel="noopener">↗</a>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main id="main"></main>
+
+<footer>
+  <div class="logo-text">AI Horizon Matrix</div>
+  <p>全球AI创业情报平台 · 发现未来独角兽</p>
+</footer>
+
+<script>
+const TOPIC_META = {
+  market:  {label:'📊 市场赛道', color:'rgba(99,102,241,.18)',  border:'rgba(99,102,241,.5)',  text:'#a5b4fc'},
+  tech:    {label:'💡 技术前沿', color:'rgba(139,92,246,.18)', border:'rgba(139,92,246,.5)', text:'#c4b5fd'},
+  vc:      {label:'💰 投融资',   color:'rgba(245,158,11,.15)', border:'rgba(245,158,11,.4)', text:'#fbbf24'},
+  policy:  {label:'🏛️ 政策监管',color:'rgba(239,68,68,.15)',  border:'rgba(239,68,68,.4)',  text:'#fca5a5'},
+  product: {label:'📱 产品策略', color:'rgba(6,182,212,.15)',  border:'rgba(6,182,212,.4)',  text:'#22d3ee'},
+  company: {label:'🏢 企业动态', color:'rgba(16,185,129,.15)', border:'rgba(16,185,129,.4)', text:'#34d399'},
+  future:  {label:'🔮 未来预测', color:'rgba(244,114,182,.15)',border:'rgba(244,114,182,.4)',text:'#f472b6'},
+};
+
+const ARTICLES = [
+  {id:'a01',title:'为什么 2026 年每家 AI 创业公司都需要重新思考分发策略',titleOrig:'Why Every AI Startup Needs a Distribution Strategy Now',summary:'Sequoia 分析了 200 家 AI 创业公司增长数据，指出付费获客成本上升 3.2 倍后，内容与社区驱动的有机增长成为新护城河，并提出三套可操作的分发飞轮框架。',keyPoints:['付费获客成本三年涨 3.2×，内容型增长 ROI 反超','三类分发飞轮：API 嵌入式、社区驱动、平台分成','2026 H2 窗口期：企业集采崛起，B2B 分发优先'],source:'Sequoia Capital',author:'Mike Vernal',publishDate:'2026-05-15',region:'overseas',topics:['market','product'],readTime:8,likes:342,isFeatured:true,coverGradient:'linear-gradient(135deg,#6366f1,#06b6d4)',originalUrl:'#'},
+  {id:'a02',title:'AI 的新护城河：数据、分发与默认值',titleOrig:'The New AI Moats: Data, Distribution, and Defaults',summary:'a16z 提出在大模型能力趋于同质化的背景下，真正可持续的竞争壁垒来自三个维度：专有数据积累、分发渠道控制和成为用户默认选择。',keyPoints:['模型能力同质化加速，壁垒向应用层转移','默认值效应：占据 OS/浏览器/企业工具入口的价值','垂直数据飞轮：专域数据 → 更优模型 → 更多用户'],source:'a16z',author:'Martin Casado',publishDate:'2026-05-12',region:'overseas',topics:['market','vc'],readTime:10,likes:521,isFeatured:true,coverGradient:'linear-gradient(135deg,#8b5cf6,#ec4899)',originalUrl:'#'},
+  {id:'a03',title:'2026：AI Agent 真正进入职场的一年',titleOrig:'AI in 2026: The Year Agents Went to Work',summary:'MIT Technology Review 深度梳理 AI Agent 从实验室走向企业的关键转折，分析了工具调用、记忆系统和多 Agent 协作三项突破。',keyPoints:['工具调用标准化（MCP 协议）降低集成门槛','长期记忆系统让 Agent 具备个性化能力','Anthropic/OpenAI 开放 Agent API 后企业采用率激增 4×'],source:'MIT Technology Review',author:'Will Douglas Heaven',publishDate:'2026-05-10',region:'overseas',topics:['tech','future'],readTime:12,likes:478,isFeatured:false,coverGradient:'linear-gradient(135deg,#06b6d4,#10b981)',originalUrl:'#'},
+  {id:'a04',title:'Cursor 如何用一个洞见构建 90 亿美元公司',titleOrig:'How Cursor Built a $9B Company on a Single Insight',summary:'Stratechery 分析 Cursor 的产品哲学：将代码补全从「自动完成」重新定义为「结对编程」，以及这个认知差异如何产生了数十亿美元的价值差距。',keyPoints:['核心洞见：开发者不需要更快的 Tab 键，而是一个思考伙伴','上下文窗口成为核心竞争力，非模型本身','企业版 SOC 2 认证破解安全顾虑，B2B ARR 爆发'],source:'Stratechery',author:'Ben Thompson',publishDate:'2026-05-08',region:'overseas',topics:['company','product'],readTime:9,likes:389,isFeatured:false,coverGradient:'linear-gradient(135deg,#f59e0b,#ef4444)',originalUrl:'#'},
+  {id:'a05',title:'基础模型的经济学',titleOrig:'The Economics of Foundation Models',summary:'a16z 深入拆解大模型训练、推理成本结构，以及为何推理成本曲线下降速度正在重塑整个 AI 应用层的商业逻辑。',keyPoints:['推理成本每 12 个月下降 10×，应用层利润空间扩大','训练成本集中化 vs 推理成本民主化的博弈','API 定价战对创业公司的双刃剑效应'],source:'a16z',author:'Guido Appenzeller',publishDate:'2026-05-05',region:'overseas',topics:['tech','market'],readTime:11,likes:304,isFeatured:false,coverGradient:'linear-gradient(135deg,#4f46e5,#0ea5e9)',originalUrl:'#'},
+  {id:'a06',title:'中国 AI 战略：西方究竟误解了什么',titleOrig:"China's AI Strategy: What the West Gets Wrong",summary:'The Information 深度报道揭示：西方对中国 AI 的判断存在两大系统性误区，政府补贴逻辑与垂直行业渗透路径均与西方叙事相反。',keyPoints:['国家队资金并非低效输血，而是精准押注基础设施','垂直落地优先：工业/医疗/政务远早于消费级','数据优势被低估：中国制造业数据量是美国的 3.7×'],source:'The Information',author:'Jing Yang',publishDate:'2026-05-03',region:'overseas',topics:['market','policy'],readTime:14,likes:615,isFeatured:true,coverGradient:'linear-gradient(135deg,#dc2626,#b45309)',originalUrl:'#'},
+  {id:'a07',title:'Perplexity 的逆 Google 策略',titleOrig:"How Perplexity Grows: The Anti-Google Strategy",summary:'Stratechery 分析 Perplexity 如何通过专注「答案引擎」而非「搜索引擎」定位，在 Google 固若金汤的搜索市场撕开裂缝。',keyPoints:['答案引擎 vs 搜索引擎：质量替代速度的范式迁移','Pro 订阅的 LTV：$240/年 vs Google 广告货币化的隐形竞争','企业 API 是第二增长曲线，B2B 占比已达 35%'],source:'Stratechery',author:'Ben Thompson',publishDate:'2026-04-28',region:'overseas',topics:['company','product'],readTime:8,likes:267,isFeatured:false,coverGradient:'linear-gradient(135deg,#0ea5e9,#6366f1)',originalUrl:'#'},
+  {id:'a08',title:'AI 产品设计的七个常见错误',titleOrig:"Building AI Products That Don't Suck",summary:"Lenny's Newsletter 总结 50 个 AI 产品案例，归纳出初创团队最常犯的七大设计陷阱，以及如何在产品早期规避它们。",keyPoints:['错误 1：展示技术能力而非解决用户痛点','错误 4：低估延迟对用户体验的毁灭性影响','错误 7：把 Demo 当 MVP，忽略长期使用衰减'],source:"Lenny's Newsletter",author:'Lenny Rachitsky',publishDate:'2026-04-25',region:'overseas',topics:['product'],readTime:7,likes:198,isFeatured:false,coverGradient:'linear-gradient(135deg,#10b981,#06b6d4)',originalUrl:'#'},
+  {id:'a09',title:'$1000 亿 AI 基础设施豪赌',titleOrig:'The $100B AI Infrastructure Bet',summary:'Sequoia 分析微软、谷歌、亚马逊三家云巨头在 AI 基础设施上的战略布局差异，以及为何这场豪赌将决定未来十年的云计算格局。',keyPoints:['三家云厂商 2026 资本支出合计超 $1000 亿','英伟达供应链约束将在 2027 H1 前持续','定制芯片（Google TPU/Amazon Trainium）策略评估'],source:'Sequoia Capital',author:'Ravi Gupta',publishDate:'2026-04-20',region:'overseas',topics:['vc','market'],readTime:10,likes:443,isFeatured:false,coverGradient:'linear-gradient(135deg,#7c3aed,#2563eb)',originalUrl:'#'},
+  {id:'a10',title:'对 AI 进展的思考',titleOrig:'Reflections on AI Progress',summary:'Sam Altman 年度长文：复盘 AGI 路径上的认知更新，以及为何他对超级智能的时间线判断比两年前更加激进。',keyPoints:['模型能力提升速度超出内部预期 18 个月','「对齐」问题的突破来自 RLHF 以外的新范式','2027–2028 可能出现第一个在特定领域超越人类集体智慧的系统'],source:'Sam Altman Blog',author:'Sam Altman',publishDate:'2026-04-15',region:'overseas',topics:['future','tech'],readTime:15,likes:892,isFeatured:true,coverGradient:'linear-gradient(135deg,#1d4ed8,#7c3aed)',originalUrl:'#'},
+  {id:'a11',title:'欧盟 AI 法案一周年：监管实施真实情况',titleOrig:'AI Regulation: EU AI Act One Year Later',summary:'MIT Technology Review 深度追踪欧盟 AI 法案实施一周年的实际执行状况，哪些条款在落地，哪些成了空文。',keyPoints:['高风险 AI 认证流程平均耗时 14 个月，远超预期','基础模型提供商豁免条款引发大量博弈','中小企业合规成本过高，导致欧洲 AI 创业空心化风险'],source:'MIT Technology Review',author:'Charlotte Jee',publishDate:'2026-04-10',region:'overseas',topics:['policy'],readTime:9,likes:176,isFeatured:false,coverGradient:'linear-gradient(135deg,#b45309,#0369a1)',originalUrl:'#'},
+  {id:'a12',title:'开源 AI：范式转移之年',titleOrig:'Open Source AI: The Year of the Shift',summary:'Andrej Karpathy 深度文章分析 Llama 3/Mistral/DeepSeek 系列开源模型如何改变 AI 行业格局，以及「开源」这个词在 AI 时代的全新含义。',keyPoints:['权重开放 ≠ 真正开源：训练数据与配方的不透明困境','微调成本曲线：2026 年微调 7B 模型不超过 $200','开源使 AI 民主化，但也降低了恶意使用门槛'],source:'Andrej Karpathy Blog',author:'Andrej Karpathy',publishDate:'2026-04-05',region:'overseas',topics:['tech'],readTime:13,likes:567,isFeatured:false,coverGradient:'linear-gradient(135deg,#059669,#0284c7)',originalUrl:'#'},
+  {id:'a13',title:'AI 安全 2026 年现状报告',titleOrig:'The State of AI Safety in 2026',summary:'Import AI 梳理年度 AI 安全研究进展，对齐研究、可解释性和红队测试三个方向的突破与瓶颈全面盘点。',keyPoints:['可解释性研究：Anthropic「电路」发现推动可视化突破','红队自动化：AI 攻击 AI 的新范式开始规模化','国际 AI 安全协议谈判：五国达成临时共识框架'],source:'Import AI',author:'Jack Clark',publishDate:'2026-03-30',region:'overseas',topics:['policy','tech'],readTime:11,likes:234,isFeatured:false,coverGradient:'linear-gradient(135deg,#dc2626,#7c3aed)',originalUrl:'#'},
+  {id:'a14',title:'GPT-5 与新基准战争',titleOrig:'GPT-5 and the New Benchmark Wars',summary:'The Information 深度报道 GPT-5 发布前后的行业竞争格局变化，以及为何传统 AI 基准测试已经无法真实反映模型能力。',keyPoints:['MMLU/HumanEval 等基准被「污染」，需要新评估体系','长上下文理解和多跳推理成为新竞争焦点','Claude/Gemini 在特定专业任务上已超越 GPT-5'],source:'The Information',author:'Amir Efrati',publishDate:'2026-03-25',region:'overseas',topics:['tech','company'],readTime:8,likes:318,isFeatured:false,coverGradient:'linear-gradient(135deg,#0ea5e9,#10b981)',originalUrl:'#'},
+  {id:'a15',title:'AI 如何在职场真正落地：来自 50 家企业的实证',titleOrig:'From Demo to Deployment: AI Agent Reality Check',summary:"Lenny's Newsletter 对话 50 家已部署 AI Agent 的企业，揭示 Demo 到生产落地之间的「死亡谷」，以及真正成功的 3 个共同要素。",keyPoints:['90% 的 AI Demo 无法转化为生产系统，根源是数据质量','成功要素 1：专注单一高频、低风险的工作流切入','成功要素 2：人在回路（Human-in-loop）作为初期质量阀'],source:"Lenny's Newsletter",author:'Lenny Rachitsky',publishDate:'2026-03-20',region:'overseas',topics:['product','company'],readTime:9,likes:281,isFeatured:false,coverGradient:'linear-gradient(135deg,#f59e0b,#84cc16)',originalUrl:'#'},
+  {id:'b01',title:'国内 AI 编程工具格局：字节、阿里与创业公司的三角战争',summary:'晚点 LatePost 深度调查字节跳动「CodeBuddy」、阿里「通义灵码」与 Cursor 系创业公司的竞争策略，揭示差异化路径与企业客户争夺战。',keyPoints:['字节走垂直整合路线：IDE 插件 + 云 CI/CD 全链路','阿里绑定钉钉/云效生态，企业客户转化成本更低','创业公司的机会：专注细分语言（低代码/鸿蒙）差异化'],source:'晚点LatePost',author:'晚点团队',publishDate:'2026-05-14',region:'domestic',topics:['market','company'],readTime:11,likes:634,isFeatured:true,coverGradient:'linear-gradient(135deg,#dc2626,#f59e0b)',originalUrl:'#'},
+  {id:'b02',title:'深度对话红杉中国：我们为什么在 AI 赛道持续加注',summary:'红杉资本中国管理合伙人分享 2026 年 AI 投资逻辑：从「押模型」转向「押应用飞轮」，以及最看好的三个垂直方向。',keyPoints:['投资逻辑转变：底层模型红利消退，垂直应用壁垒显现','三个优先方向：AI+工业软件、AI+医疗影像、AI+法律合规','对中国 AI 创业的判断：全球化是必选项，不是加分项'],source:'红杉资本中国',author:'Neil Shen',publishDate:'2026-05-11',region:'domestic',topics:['vc'],readTime:13,likes:487,isFeatured:true,coverGradient:'linear-gradient(135deg,#dc2626,#7c3aed)',originalUrl:'#'},
+  {id:'b03',title:'月之暗面和 Kimi 的下一步：从聊天到 Agent',summary:'36氪深度报道 Kimi 从单轮对话向 Agentic 产品的战略转型，新架构「Kimi Workspace」能否突破 DAU 增长天花板。',keyPoints:['Kimi DAU 突破 1200 万后增速放缓，需找第二曲线','Workspace 核心：多文件处理 + 任务规划 + 工具调用三合一','融资背景：月之暗面新一轮估值已达 $35 亿'],source:'36氪',author:'邓咏仪',publishDate:'2026-05-09',region:'domestic',topics:['company','tech'],readTime:9,likes:376,isFeatured:true,coverGradient:'linear-gradient(135deg,#1d4ed8,#0ea5e9)',originalUrl:'#'},
+  {id:'b04',title:'国产芯片决定命运：AI 算力格局 2026 年战况',summary:'钛媒体深度梳理华为昇腾、寒武纪、壁仞科技的算力芯片最新进展，以及美国出口管制收紧对国产替代节奏的影响。',keyPoints:['昇腾 910C 量产，推理性能达 A100 的 70%','寒武纪思元 590 切入推理侧，避开训练竞争','芯片替代节点预测：2027 H1 前大规模训练仍依赖灰市 H100'],source:'钛媒体',author:'钛媒体研究院',publishDate:'2026-05-07',region:'domestic',topics:['tech','market'],readTime:12,likes:512,isFeatured:true,coverGradient:'linear-gradient(135deg,#b45309,#dc2626)',originalUrl:'#'},
+  {id:'b05',title:'中国大模型价格战的终点在哪里',summary:'虎嗅分析国内大模型 API 价格从千 token 两分钱跌至 0.1 分的全过程，以及价格竞争结束后谁能活下来。',keyPoints:['价格战本质：以亏损清算无有效营收的竞争者','存活条件：月调用量超 50 亿 token 才能覆盖边际成本','终局预测：3–4 家大模型 + N 家垂直微调层的生态格局'],source:'虎嗅',author:'苑伶',publishDate:'2026-05-04',region:'domestic',topics:['market','company'],readTime:8,likes:423,isFeatured:false,coverGradient:'linear-gradient(135deg,#0369a1,#6366f1)',originalUrl:'#'},
+  {id:'b06',title:'豆包日活破亿的背后：字节 AI 产品的真实打法',summary:'晚点 LatePost 揭秘豆包从内部孵化到国民级 AI 助手的增长路径，以及字节在 AI C 端产品上与百度文心、讯飞星火的差异化策略。',keyPoints:['起步策略：学生群体 + 作业场景，精准切入高频刚需','留存关键：个性化记忆功能让 Day30 留存率高于同类 22%','商业化路线：先规模后变现，广告系统 2027 年接入'],source:'晚点LatePost',author:'晚点团队',publishDate:'2026-04-30',region:'domestic',topics:['company','product'],readTime:10,likes:558,isFeatured:false,coverGradient:'linear-gradient(135deg,#6366f1,#ec4899)',originalUrl:'#'},
+  {id:'b07',title:'2026 年 AI 政策全解读：国内监管框架最新进展',summary:'钛媒体系统梳理国家互联网信息办公室等部门发布的 AI 治理新规，从算法备案到生成式 AI 标注要求的合规要点。',keyPoints:['生成式 AI 服务管理办法 2.0 版新增六项义务','算法备案制度升级：高风险 AI 需在 30 日内完成','境外数据跨境传输新要求对国际 AI 企业的影响'],source:'钛媒体',author:'钛媒体政策组',publishDate:'2026-04-27',region:'domestic',topics:['policy'],readTime:10,likes:245,isFeatured:false,coverGradient:'linear-gradient(135deg,#dc2626,#b45309)',originalUrl:'#'},
+  {id:'b08',title:'从 0 到 100 万付费用户：国产 AI 工具增长拆解',summary:'36氪拆解三个国产 AI 工具在不同增长阶段的实战方法论，包括流量来源、定价策略和留存钩子的完整复盘。',keyPoints:['冷启动：KOL 种草 + 抖音 Demo 视频是最高效获客渠道','定价策略：月付 ¥99 的心理锚点转化率比年付高 3×','留存钩子：数据存储依赖（作品/历史记录）是核心留存因素'],source:'36氪',author:'陈之琰',publishDate:'2026-04-22',region:'domestic',topics:['product','market'],readTime:8,likes:334,isFeatured:false,coverGradient:'linear-gradient(135deg,#059669,#0ea5e9)',originalUrl:'#'},
+  {id:'b09',title:'智谱 AI 的路：学术血统如何转型商业',summary:'36氪深度描绘清华系智谱 AI 从论文驱动走向商业化的艰难转型，GLM 系列模型的差异化定位与政府/国企客户开拓策略。',keyPoints:['学术积累的双刃剑：高质量论文建立品牌，但研发节奏慢','GLM 差异化：中文数学推理能力超越 GPT-4o 系列','政企客户路线：私有化部署 + 信创认证是国内独特优势'],source:'36氪',author:'谷晓楠',publishDate:'2026-04-18',region:'domestic',topics:['company'],readTime:9,likes:287,isFeatured:false,coverGradient:'linear-gradient(135deg,#0369a1,#059669)',originalUrl:'#'},
+  {id:'b10',title:'AI 医疗商业化困境与突破路径',summary:'虎嗅梳理国内 AI 医疗赛道五年沉浮，影像诊断、药物发现、医疗机器人三大方向的真实商业化进展与当前瓶颈。',keyPoints:['影像 AI 落地最快，但单价压至 ¥0.1–1/片，利润极薄','药物发现 AI 进入 IND 阶段的仅 3 家，周期仍长达 8 年','医疗机器人：手术机器人 ASP 降至 ¥800 万，市场打开'],source:'虎嗅',author:'动脉网',publishDate:'2026-04-14',region:'domestic',topics:['market','company'],readTime:11,likes:198,isFeatured:false,coverGradient:'linear-gradient(135deg,#10b981,#059669)',originalUrl:'#'},
+  {id:'b11',title:'Llama 开源对中国 AI 生态的深层影响',summary:'机器之心深度分析 Meta Llama 3 系列开源对国内 AI 生态的连锁反应：基础模型竞争压力、微调产业崛起与计算资源再分配。',keyPoints:['Llama 3 发布后国内至少 12 家公司转向微调路线','微调即服务（FTaaS）新赛道：毛利率高达 60–70%','开源模型在私有化部署场景完胜闭源 API，信创市场受益'],source:'机器之心',author:'机器之心编辑部',publishDate:'2026-04-10',region:'domestic',topics:['tech','market'],readTime:8,likes:321,isFeatured:false,coverGradient:'linear-gradient(135deg,#7c3aed,#0ea5e9)',originalUrl:'#'},
+  {id:'b12',title:'高榕资本：我们最看好的 AI 三个细分方向',summary:'高榕资本合伙人深度分享 2026 年 AI 投资判断框架，以及在 AI+教育、AI+法律、AI+工业三个方向的投资逻辑与被投案例。',keyPoints:['AI+教育：个性化学习不是终点，AI 考核/测评是蓝海','AI+法律：合同审阅已商业化，合规咨询是下一个高毛利市场','AI+工业：仿真与数字孪生是工业 AI 最快落地入口'],source:'高榕资本',author:'高榕资本',publishDate:'2026-04-06',region:'domestic',topics:['vc'],readTime:10,likes:267,isFeatured:false,coverGradient:'linear-gradient(135deg,#f59e0b,#dc2626)',originalUrl:'#'},
+  {id:'b13',title:'海外华人 AI 创业者：夹缝中的机会与压力',summary:'晚点 LatePost 深度调查在美、欧创业的华人 AI 团队，揭示地缘政治压力下的融资困境与产品路线策略。',keyPoints:['美国投资人对华人团队的审查周期延长至 6–9 个月','欧洲成为替代选项：德法监管相对友好，人才成本低 40%','产品策略：先做英语市场，证明 PMF 再回头服务中国市场'],source:'晚点LatePost',author:'晚点团队',publishDate:'2026-04-01',region:'domestic',topics:['company','market'],readTime:10,likes:394,isFeatured:false,coverGradient:'linear-gradient(135deg,#6366f1,#f59e0b)',originalUrl:'#'},
+  {id:'b14',title:'AI 教育赛道真实现状：热钱之后谁活下来了',summary:'36氪盘点 AI 教育赛道 2024–2026 两年间的洗牌过程，资本退潮后真正留下来的产品有哪些共同特征。',keyPoints:['K12 to C 产品：监管压力+付费意愿双重压制，仅 3% 存活','职业培训 to B 路线：AI+考证/技能认证存活率最高','海外市场：东南亚教育 AI 出海成功率是国内市场 4×'],source:'36氪',author:'邓咏仪',publishDate:'2026-03-25',region:'domestic',topics:['market','company'],readTime:9,likes:213,isFeatured:false,coverGradient:'linear-gradient(135deg,#0369a1,#10b981)',originalUrl:'#'},
+  {id:'b15',title:'国内 Copilot 企业销售打法复盘',summary:'经纬创投整理 10 家 AI Copilot 企业客户的销售案例，提炼出从 POC 到签约到续费的完整方法论，覆盖定价、演示设计和内部 Champion 培养。',keyPoints:['POC 黄金期：21 天是转化率的分水岭，超过则流失风险激增','演示策略：用客户自己的数据演示 > 用行业 Demo 演示 5×','续费关键：锁定 2–3 个内部 Champion，避免决策人变动风险'],source:'经纬创投',author:'经纬中国',publishDate:'2026-03-20',region:'domestic',topics:['product','vc'],readTime:8,likes:308,isFeatured:false,coverGradient:'linear-gradient(135deg,#059669,#0369a1)',originalUrl:'#'},
+];
+
+function getTopicStyle(topic){
+  return TOPIC_META[topic] || {label:topic,color:'rgba(99,102,241,.18)',border:'rgba(99,102,241,.5)',text:'#a5b4fc'};
+}
+
+function getRelated(art, count){
+  return ARTICLES
+    .filter(a => a.id !== art.id && a.topics.some(t => art.topics.includes(t)))
+    .sort((a,b) => b.likes - a.likes)
+    .slice(0, count || 3);
+}
+
+let savedArticles = JSON.parse(localStorage.getItem('ahm_saved_arts')||'[]');
+let currentArt = null;
+
+function renderPage(art){
+  currentArt = art;
+  document.title = art.title + ' — AI Horizon Matrix';
+
+  // Update nav orig link
+  const origBtn = document.getElementById('origBtn');
+  if(art.originalUrl && art.originalUrl !== '#'){
+    origBtn.href = art.originalUrl;
+    origBtn.style.display = '';
+  } else {
+    origBtn.style.display = 'none';
+  }
+
+  // Save btn state
+  updateSaveBtn();
+
+  // Topic badges
+  const topicBadges = art.topics.map(t => {
+    const s = getTopicStyle(t);
+    return `<span class="badge badge-topic" style="background:${s.color};border:1px solid ${s.border};color:${s.text}">${s.label}</span>`;
+  }).join('');
+
+  const regionBadge = art.region === 'overseas'
+    ? '<span class="badge badge-overseas">🌍 海外</span>'
+    : '<span class="badge badge-domestic">🇨🇳 海内</span>';
+
+  const featuredBadge = art.isFeatured ? '<span class="badge-featured">✨ 精选</span>' : '';
+
+  // Key points
+  const kps = art.keyPoints.map((kp, i) => `
+    <li>
+      <div class="kp-marker">${i+1}</div>
+      <span class="kp-text">${kp}</span>
+    </li>`).join('');
+
+  // Related articles
+  const related = getRelated(art);
+  const relHTML = related.map(r => {
+    const tm = getTopicStyle(r.topics[0]);
+    const regionBadgeSmall = r.region==='overseas'
+      ? '<span style="color:#22d3ee;font-size:11px">🌍 海外</span>'
+      : '<span style="color:#34d399;font-size:11px">🇨🇳 海内</span>';
+    return `
+      <a class="rel-card" href="article.html?id=${r.id}">
+        <div class="rel-cover" style="background:${r.coverGradient}"></div>
+        <div class="rel-body">
+          <div class="rel-topic" style="color:${tm.text}">${tm.label}</div>
+          <div class="rel-title">${r.title}</div>
+          <div class="rel-meta">${regionBadgeSmall} · ${r.source} · ${r.readTime}min · ❤ ${r.likes}</div>
+        </div>
+      </a>`;
+  }).join('');
+
+  document.getElementById('main').innerHTML = `
+    <div class="art-cover">
+      <div class="art-cover-bg" style="background:${art.coverGradient}"></div>
+      <div class="art-cover-overlay"></div>
+      <div class="art-cover-badges">
+        ${regionBadge}
+        ${topicBadges}
+        ${featuredBadge}
+      </div>
+    </div>
+
+    <div class="art-meta">
+      <h1 class="art-title">${art.title}</h1>
+      ${art.titleOrig ? `<div class="art-title-orig">${art.titleOrig}</div>` : ''}
+      <div class="art-byline">
+        <span>${art.source}</span>
+        ${art.author ? `<span class="byline-sep">·</span><span>${art.author}</span>` : ''}
+        <span class="byline-sep">·</span><span>${art.publishDate}</span>
+        <span class="byline-sep">·</span>
+        <span class="art-read-time">⏱ 预计阅读 ${art.readTime} 分钟</span>
+        <span class="byline-sep">·</span><span>❤ ${art.likes} 人收藏</span>
+      </div>
+    </div>
+
+    <div class="art-divider"></div>
+
+    <div style="margin-bottom:32px">
+      <div class="section-label">核心观点</div>
+      <ul class="key-points">${kps}</ul>
+    </div>
+
+    <div class="art-divider"></div>
+
+    <div style="margin-bottom:36px">
+      <div class="section-label">文章摘要</div>
+      <p class="art-summary-text">${art.summary}</p>
+    </div>
+
+    ${art.originalUrl && art.originalUrl !== '#' ? `
+    <div style="margin-bottom:40px">
+      <a class="orig-cta" href="${art.originalUrl}" target="_blank" rel="noopener">阅读原文 ↗</a>
+      <p class="orig-cta-note">将跳转至 ${art.source} 原文页面</p>
+    </div>` : `
+    <div style="margin-bottom:40px">
+      <div style="padding:16px 20px;border-radius:12px;border:1px dashed var(--border);text-align:center;color:var(--muted);font-size:.85rem">
+        原文链接待更新 · 请关注 ${art.source} 官方渠道
+      </div>
+    </div>`}
+
+    <div class="art-divider"></div>
+
+    ${related.length > 0 ? `
+    <div>
+      <div class="section-label" style="margin-bottom:16px">相关文章</div>
+      <div class="related-grid">${relHTML}</div>
+    </div>` : ''}
+  `;
+}
+
+function renderNotFound(id){
+  document.getElementById('main').innerHTML = `
+    <div class="not-found">
+      <h2>文章未找到</h2>
+      <p>ID 为 "${id || '未知'}" 的文章不存在，<br>可能已被移除或链接有误。</p>
+      <a href="index.html#insights">← 返回行业洞察</a>
+    </div>`;
+}
+
+function updateSaveBtn(){
+  const btn = document.getElementById('saveBtn');
+  if(!btn || !currentArt) return;
+  if(savedArticles.includes(currentArt.id)){
+    btn.classList.add('saved');
+    btn.title = '取消收藏';
+  } else {
+    btn.classList.remove('saved');
+    btn.title = '收藏';
+  }
+}
+
+window.toggleSave = function(){
+  if(!currentArt) return;
+  const idx = savedArticles.indexOf(currentArt.id);
+  if(idx === -1) savedArticles.push(currentArt.id);
+  else savedArticles.splice(idx, 1);
+  localStorage.setItem('ahm_saved_arts', JSON.stringify(savedArticles));
+  updateSaveBtn();
+};
+
+window.shareArticle = function(){
+  const btn = document.getElementById('shareBtn');
+  navigator.clipboard.writeText(location.href).then(()=>{
+    btn.textContent = '✓';
+    btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent = '⬡'; btn.classList.remove('copied'); }, 1800);
+  }).catch(()=>{
+    prompt('复制链接：', location.href);
+  });
+};
+
+// Back button: use history if available, else go to index#insights
+document.getElementById('backBtn').addEventListener('click', e => {
+  e.preventDefault();
+  if(document.referrer && document.referrer.includes(location.hostname)){
+    history.back();
+  } else {
+    location.href = 'insights.html';
+  }
+});
+
+// Reading progress bar
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const scrollTop = doc.scrollTop || document.body.scrollTop;
+  const scrollHeight = doc.scrollHeight - doc.clientHeight;
+  const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+  document.getElementById('progressBar').style.width = pct + '%';
+});
+
+// Init
+const params = new URLSearchParams(location.search);
+const id = params.get('id');
+const art = ARTICLES.find(a => a.id === id);
+if(art) renderPage(art);
+else renderNotFound(id);
+</script>
+</body>
+</html>
