@@ -367,84 +367,84 @@ footer .logo-text{font-size:1.2rem;font-weight:800;background:var(--g1);-webkit-
 .rpt-btn:active{transform:translateY(0)}
 
 /* ── REPORT MODAL ── */
-.rpt-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:3000;backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center}
-.rpt-shell{background:#fff;border-radius:16px;width:min(820px,94vw);max-height:90vh;display:flex;flex-direction:column;box-shadow:0 32px 64px rgba(0,0,0,.5);overflow:hidden}
-.rpt-topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid #e5e7eb;background:#f9fafb;flex-shrink:0}
-.rpt-topbar-title{font-size:.82rem;font-weight:700;color:#1f2937;display:flex;align-items:center;gap:6px}
+.rpt-overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:3000;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center}
+.rpt-shell{background:#0d0d1f;border-radius:16px;width:min(860px,94vw);max-height:90vh;display:flex;flex-direction:column;box-shadow:0 32px 80px rgba(0,0,0,.7),0 0 0 1px rgba(99,102,241,.15);overflow:hidden}
+.rpt-topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid rgba(99,102,241,.2);background:#12122a;flex-shrink:0}
+.rpt-topbar-title{font-size:.82rem;font-weight:700;color:#c0c0e0;display:flex;align-items:center;gap:6px}
 .rpt-topbar-actions{display:flex;gap:8px}
-.rpt-dl-btn{background:linear-gradient(135deg,#4f46e5,#7c3aed);border:none;color:#fff;padding:7px 14px;border-radius:8px;font-size:.78rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px}
-.rpt-dl-btn:hover{opacity:.88}
-.rpt-close-btn{background:#f3f4f6;border:1px solid #d1d5db;color:#6b7280;padding:7px 12px;border-radius:8px;font-size:.78rem;cursor:pointer}
-.rpt-close-btn:hover{background:#e5e7eb}
-.rpt-body{overflow-y:auto;flex:1;padding:32px 40px;background:#fff;font-family:'Helvetica Neue','Arial',sans-serif;color:#1f2937;font-size:.875rem;line-height:1.7}
-
-/* Report typography */
-.rpt-body h1{font-size:1.6rem;font-weight:800;color:#111827;margin:0 0 6px}
-.rpt-body h2{font-size:1.1rem;font-weight:700;color:#1f2937;margin:28px 0 10px;padding-bottom:5px;border-bottom:2px solid #e5e7eb}
-.rpt-body h3{font-size:.92rem;font-weight:700;color:#374151;margin:18px 0 7px}
-.rpt-body p{margin:0 0 10px;color:#374151}
-.rpt-body ul{padding-left:18px;margin:0 0 10px}
-.rpt-body li{margin-bottom:4px;color:#374151}
-.rpt-body table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.82rem}
-.rpt-body th{background:#f3f4f6;padding:8px 10px;text-align:left;font-weight:600;color:#374151;border:1px solid #e5e7eb}
-.rpt-body td{padding:8px 10px;border:1px solid #e5e7eb;color:#374151;vertical-align:top}
-.rpt-body tr:nth-child(even) td{background:#fafafa}
-
-/* Cover page */
-.rpt-cover{padding:48px 0 36px;border-bottom:3px solid #4f46e5;margin-bottom:32px}
-.rpt-cover-badge{display:inline-block;background:#ede9fe;color:#5b21b6;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px;margin-bottom:14px;text-transform:uppercase}
-.rpt-cover-name{font-size:2rem;font-weight:800;color:#111827;margin:0 0 4px}
-.rpt-cover-tagline{font-size:1rem;color:#6b7280;margin:0 0 22px}
-.rpt-cover-meta{display:flex;gap:20px;flex-wrap:wrap}
-.rpt-cover-meta span{font-size:.78rem;color:#9ca3af;display:flex;align-items:center;gap:4px}
-.rpt-cover-meta b{color:#374151}
-
-/* Metric cards */
-.rpt-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:14px 0}
-.rpt-kpi{background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:12px;text-align:center}
-.rpt-kpi-val{font-size:1.3rem;font-weight:800;color:#4f46e5}
-.rpt-kpi-label{font-size:.7rem;color:#6b7280;margin-top:2px}
-
-/* Tag chips */
-.rpt-chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
-.rpt-chip{background:#ede9fe;color:#5b21b6;font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:20px}
-.rpt-chip-green{background:#d1fae5;color:#065f46}
-.rpt-chip-red{background:#fee2e2;color:#991b1b}
-.rpt-chip-gray{background:#f3f4f6;color:#374151}
-
-/* Rating bar */
-.rpt-score-row{display:flex;align-items:center;gap:10px;margin:6px 0}
-.rpt-score-label{font-size:.78rem;color:#374151;width:120px;flex-shrink:0}
-.rpt-score-bar{flex:1;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
-.rpt-score-fill{height:100%;background:linear-gradient(90deg,#4f46e5,#7c3aed);border-radius:3px}
-.rpt-score-num{font-size:.78rem;font-weight:700;color:#4f46e5;width:30px;text-align:right}
-
-/* Chapter divider */
-.rpt-chapter{font-size:.65rem;font-weight:700;letter-spacing:1.5px;color:#9ca3af;text-transform:uppercase;margin:32px 0 4px;display:flex;align-items:center;gap:8px}
-.rpt-chapter::after{content:'';flex:1;height:1px;background:#e5e7eb}
-
-/* Verdict box */
-.rpt-verdict{background:linear-gradient(135deg,#ede9fe,#ddd6fe);border:1px solid #c4b5fd;border-radius:12px;padding:16px;margin:16px 0}
-.rpt-verdict-title{font-size:.78rem;font-weight:700;color:#5b21b6;margin-bottom:6px}
-.rpt-verdict-text{font-size:.85rem;color:#3730a3;line-height:1.65}
-
-/* 2x2 matrix */
-.rpt-matrix{position:relative;width:300px;height:300px;border:1px solid #e5e7eb;border-radius:8px;margin:14px 0;background:#fafafa}
-.rpt-matrix-x{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:.65rem;color:#9ca3af}
-.rpt-matrix-y{position:absolute;top:50%;left:6px;transform:translateY(-50%) rotate(-90deg);font-size:.65rem;color:#9ca3af;white-space:nowrap}
-.rpt-matrix-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:#4f46e5;transform:translate(-50%,50%);cursor:pointer}
-.rpt-matrix-dot-self{background:#ef4444;width:13px;height:13px}
-.rpt-matrix-dot-label{position:absolute;font-size:.62rem;color:#374151;white-space:nowrap;transform:translate(-50%,calc(50% + 13px))}
-.rpt-matrix-qlines{position:absolute;inset:0;pointer-events:none}
-
-/* Print styles */
+.rpt-dl-btn{background:linear-gradient(135deg,#4f46e5,#7c3aed);border:none;color:#fff;padding:7px 14px;border-radius:8px;font-size:.78rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px}.rpt-dl-btn:hover{opacity:.88}
+.rpt-close-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#a0a0c0;padding:7px 12px;border-radius:8px;font-size:.78rem;cursor:pointer}.rpt-close-btn:hover{background:rgba(255,255,255,.1)}
+.rpt-body{overflow-y:auto;flex:1;padding:32px 36px;background:#0d0d1f;font-family:'Helvetica Neue','Arial',sans-serif;color:#e0e0f0;font-size:.875rem;line-height:1.8}
+.rpt-dark-cover{padding:40px 0 32px;border-bottom:1px solid rgba(99,102,241,.25);margin-bottom:28px}
+.rpt-cover-badge-dark{display:inline-block;background:rgba(99,102,241,.12);color:#a5b4fc;font-size:.68rem;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:.5px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(99,102,241,.3)}
+.rpt-cover-name-dark{font-size:2rem;font-weight:800;color:#f0f0ff;margin:0 0 4px;line-height:1.2}
+.rpt-cover-cn{font-size:1.2rem;color:#a0a0c0}.rpt-cover-tagline-dark{font-size:1rem;color:#8b8ba7;margin:0 0 16px}
+.rpt-cover-stars{font-size:1.4rem;color:#facc15;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.rpt-cover-stars span{font-size:.85rem;color:#a0a0c0}
+.rpt-thesis{background:rgba(99,102,241,.07);border-left:3px solid #6366f1;border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+.rpt-thesis-label{font-size:.65rem;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+.rpt-thesis-text{font-size:.88rem;color:#c0c0e0;line-height:1.7}
+.rpt-cover-meta-dark{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px}
+.rpt-cover-meta-dark span{font-size:.73rem;color:#8b8ba7}
+.rpt-scorecard{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:0 0 28px}
+.rpt-sc-card{background:#12122a;border:1px solid rgba(99,102,241,.2);border-radius:12px;padding:14px 10px;text-align:center;transition:border-color .2s,box-shadow .2s}
+.rpt-sc-card:hover{border-color:#6366f1;box-shadow:0 0 12px rgba(99,102,241,.2)}
+.rpt-sc-icon{font-size:1.2rem;margin-bottom:6px}
+.rpt-sc-val{font-size:1rem;font-weight:700;color:#6366f1;line-height:1.2;margin-bottom:4px}
+.rpt-sc-label{font-size:.65rem;color:#8b8ba7}
+.rpt-chart-zone{margin-bottom:28px}
+.rpt-chart-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.rpt-chart-card{background:#12122a;border:1px solid rgba(99,102,241,.15);border-radius:12px;padding:18px}
+.rpt-chart-title{font-size:.8rem;font-weight:700;color:#c0c0e0;margin-bottom:2px}
+.rpt-chart-subtitle{font-size:.66rem;color:#8b8ba7;margin-bottom:12px}
+.rpt-bar-section{padding:2px 0}.rpt-bar-row{display:flex;align-items:center;gap:8px;margin:7px 0}
+.rpt-bar-label{font-size:.71rem;color:#a0a0c0;width:90px;flex-shrink:0}
+.rpt-bar-track{flex:1;height:7px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden}
+.rpt-bar-fill{height:100%;border-radius:4px;transition:width .6s ease}
+.rpt-bar-val{font-size:.69rem;font-weight:700;width:72px;text-align:right;flex-shrink:0}
+.rpt-pmf-section{padding:2px 0}
+.rpt-pmf-stages{display:flex;align-items:center;gap:4px;margin-bottom:8px;flex-wrap:wrap}
+.rpt-pmf-stage-dot{font-size:.68rem;padding:3px 8px;border-radius:20px;font-weight:600;color:#8b8ba7;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}
+.rpt-pmf-stage-dot.active{color:#f0f0ff;background:rgba(99,102,241,.18);border-color:#6366f1}
+.rpt-pmf-arrow{font-size:.6rem;color:#8b8ba7}
+.rpt-pmf-progress{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:10px}
+.rpt-pmf-progress-fill{height:100%;background:linear-gradient(90deg,#4f46e5,#7c3aed);border-radius:2px}
+.rpt-accordion{display:flex;flex-direction:column;gap:8px}
+.rpt-acc-item{background:#12122a;border:1px solid rgba(99,102,241,.15);border-radius:12px;overflow:hidden}
+.rpt-acc-header{width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:transparent;border:none;color:#c0c0e0;font-size:.83rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s;text-align:left}
+.rpt-acc-header:hover{background:rgba(99,102,241,.06)}
+.rpt-acc-header.open{color:#a5b4fc;background:rgba(99,102,241,.09)}
+.rpt-acc-arrow{color:#8b8ba7;font-size:.7rem;flex-shrink:0}
+.rpt-acc-body{padding:0 18px 16px;color:#e0e0f0;font-size:.82rem;line-height:1.75}
+.rpt-acc-body h3{font-size:.74rem;font-weight:700;color:#8b8ba7;margin:14px 0 6px;text-transform:uppercase;letter-spacing:.5px}
+.rpt-dark-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.79rem}
+.rpt-dark-table th{background:rgba(99,102,241,.1);padding:7px 10px;text-align:left;font-weight:600;color:#a0a0c0;border:1px solid rgba(255,255,255,.06)}
+.rpt-dark-table td{padding:7px 10px;border:1px solid rgba(255,255,255,.06);color:#c0c0e0;vertical-align:top}
+.rpt-dark-table tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+.rpt-kpi-grid-dark{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin:10px 0}
+.rpt-kpi-dark{background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.15);border-radius:9px;padding:10px;text-align:center}
+.rpt-kpi-val-dark{font-size:1rem;font-weight:800;color:#6366f1}.rpt-kpi-label-dark{font-size:.65rem;color:#8b8ba7;margin-top:2px}
+.rpt-chip-rpt{display:inline-block;font-size:.69rem;font-weight:600;padding:2px 8px;border-radius:20px;margin:0 3px 3px 0}
+.rpt-chip-red{background:rgba(239,68,68,.12);color:#fca5a5;border:1px solid rgba(239,68,68,.25)}
+.rpt-chip-green{background:rgba(16,185,129,.12);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)}
+.rpt-moat-list{display:flex;flex-direction:column;gap:6px;margin:8px 0}
+.rpt-moat-item{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;background:rgba(99,102,241,.06);border-radius:8px;font-size:.79rem;color:#c0c0e0}
+.rpt-moat-num{font-size:.72rem;font-weight:700;color:#6366f1;flex-shrink:0;padding-top:1px}
+.rpt-verdict-dark{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.22);border-radius:12px;padding:16px;margin:14px 0}
+.rpt-verdict-title-dark{font-size:.72rem;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.rpt-verdict-text-dark{font-size:.84rem;color:#c0c0e0;line-height:1.65}
+.rpt-footnote{font-size:.67rem;color:#8b8ba7;margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,.06)}
 @media print{
   body>*:not(#reportOverlay){display:none!important}
   .rpt-overlay{position:static;background:none;backdrop-filter:none;display:block}
   .rpt-shell{width:100%;max-height:none;box-shadow:none;border-radius:0}
   .rpt-topbar{display:none}
   .rpt-body{overflow:visible;padding:20px}
-  .rpt-chapter{break-before:page}
+}
+@media(max-width:640px){
+  .rpt-scorecard{grid-template-columns:repeat(3,1fr)}
+  .rpt-chart-row{grid-template-columns:1fr}
+  .rpt-body{padding:16px 14px}
 }
 
 /* ── DRAWER TABS ── */
@@ -461,11 +461,11 @@ footer .logo-text{font-size:1.2rem;font-weight:800;background:var(--g1);-webkit-
 .dp-rpt-toc-item{padding:3px 9px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted2);font-size:.68rem;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap}
 .dp-rpt-toc-item:hover{border-color:#6366f1;color:#a5b4fc}
 .dp-rpt-toc-item.active{background:rgba(99,102,241,.15);border-color:#6366f1;color:#a5b4fc}
-.dp-rpt-content{flex:1;overflow-y:auto;background:#fff;min-height:0;scroll-behavior:smooth}
-.dp-rpt-chapter{display:block;padding:20px 22px 0;font-family:'Helvetica Neue',Arial,sans-serif;color:#1f2937;font-size:.875rem;line-height:1.7}
+.dp-rpt-content{flex:1;overflow-y:auto;background:#0d0d1f;min-height:0;scroll-behavior:smooth}
+.dp-rpt-chapter{display:block;padding:20px 22px 0;font-family:'Helvetica Neue',Arial,sans-serif;color:#e0e0f0;font-size:.875rem;line-height:1.7}
 .dp-rpt-chapter:last-child{padding-bottom:20px}
-.dp-rpt-divider{display:flex;align-items:center;gap:8px;padding:14px 22px 0;background:#fff}
-.dp-rpt-divider-line{flex:1;height:1px;background:#e5e7eb}
+.dp-rpt-divider{display:flex;align-items:center;gap:8px;padding:14px 22px 0;background:#0d0d1f}
+.dp-rpt-divider-line{flex:1;height:1px;background:rgba(255,255,255,0.08)}
 .dp-rpt-divider-label{font-size:.63rem;font-weight:700;color:#9ca3af;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
 .dp-rpt-footer{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;background:var(--bg3);border-top:1px solid var(--border);flex-shrink:0}
 .dp-rpt-cur-chapter{font-size:.71rem;color:var(--muted2);display:flex;align-items:center;gap:6px}
@@ -9332,268 +9332,158 @@ const COMP_MATRIX = {
 
 // ── REPORT RENDER FUNCTIONS ───────────────────────────────────────────
 
-function rptCover(d, t, pmf, pricing, metrics) {
+function renderRadarChart(scores) {
+  const axes = Object.keys(scores);
+  const N = axes.length;
+  const cx = 150, cy = 130, maxR = 90;
+  const toRad = d => d * Math.PI / 180;
+  function pt(i, r) {
+    const a = toRad(-90 + (360 / N) * i);
+    return [+(cx + r * Math.cos(a)).toFixed(1), +(cy + r * Math.sin(a)).toFixed(1)];
+  }
+  function hexPoly(r) {
+    return Array.from({length:N},(_,i)=>pt(i,r).join(',')).join(' ');
+  }
+  const dataPoly = axes.map((ax,i)=>{const r=(scores[ax]/100)*maxR;return pt(i,r).join(',');}).join(' ');
+  const axisLines = axes.map((_,i)=>{const [x,y]=pt(i,maxR);return `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>`;}).join('');
+  const labels = axes.map((ax,i)=>{
+    const [x,y]=pt(i,maxR+16);
+    const anchor = x<cx-5?'end':x>cx+5?'start':'middle';
+    return `<text x="${x}" y="${+(y+4).toFixed(1)}" text-anchor="${anchor}" fill="#8b8ba7" font-size="10" font-family="inherit">${ax}</text>`;
+  }).join('');
+  return `<svg viewBox="0 0 300 260" style="width:100%;max-width:260px;display:block;margin:0 auto"><polygon points="${hexPoly(maxR*.33)}" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/><polygon points="${hexPoly(maxR*.66)}" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/><polygon points="${hexPoly(maxR)}" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>${axisLines}<polygon points="${dataPoly}" fill="rgba(99,102,241,0.2)" stroke="#6366f1" stroke-width="2"/>${axes.map((ax,i)=>{const r=(scores[ax]/100)*maxR;const [x,y]=pt(i,r);return `<circle cx="${x}" cy="${y}" r="3.5" fill="#6366f1"/>`;}).join('')}${labels}</svg>`;
+}
+
+function renderBubbleChart(matrix) {
+  if(!matrix||!matrix.length) return '<div style="color:#8b8ba7;font-size:.75rem;text-align:center;padding:20px">暂无竞品数据</div>';
+  const W=260,H=200,pad=28;
+  const cW=W-pad*2, cH=H-pad*2;
+  const dots = matrix.map(m=>{
+    const px=+(pad+(m.x/100)*cW).toFixed(1);
+    const py=+(H-pad-(m.y/100)*cH).toFixed(1);
+    const self=m.self;
+    const r=self?7:5;
+    const fill=self?'#6366f1':'rgba(99,102,241,0.35)';
+    const stroke=self?'#a5b4fc':'rgba(99,102,241,0.6)';
+    const tc=self?'#a5b4fc':'#8b8ba7';
+    const fs=self?10:9; const fw=self?700:400;
+    return `<circle cx="${px}" cy="${py}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="1.5"><title>${m.name}</title></circle><text x="${px}" y="${+(py-r-4).toFixed(1)}" text-anchor="middle" fill="${tc}" font-size="${fs}" font-weight="${fw}" font-family="inherit">${m.name}</text>`;
+  }).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:${W}px;display:block"><line x1="${pad}" y1="${pad}" x2="${pad}" y2="${H-pad}" stroke="rgba(255,255,255,0.1)" stroke-width="1"/><line x1="${pad}" y1="${H-pad}" x2="${W-pad}" y2="${H-pad}" stroke="rgba(255,255,255,0.1)" stroke-width="1"/><line x1="${W/2}" y1="${pad}" x2="${W/2}" y2="${H-pad}" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4"/><line x1="${pad}" y1="${H/2}" x2="${W-pad}" y2="${H/2}" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4"/><text x="${W/2}" y="${H-6}" text-anchor="middle" fill="#8b8ba7" font-size="9" font-family="inherit">商业化能力 →</text><text x="10" y="${H/2}" text-anchor="middle" fill="#8b8ba7" font-size="9" font-family="inherit" transform="rotate(-90,10,${H/2})">产品能力 →</text>${dots}</svg>`;
+}
+
+function renderBarChartUE(track) {
+  const ue = UNIT_ECON[track] || UNIT_ECON.infra;
+  const ltvcacNum = parseFloat(ue.ltvcac) || 20;
+  const ltvcacPct = Math.min(98, (ltvcacNum/32*100)).toFixed(1);
+  const gmMatch = ue.grossMargin.match(/(\d+)/);
+  const gm = gmMatch ? parseInt(gmMatch[1]) : 70;
+  const pbMatch = ue.payback.match(/(\d+)/);
+  const pb = pbMatch ? parseInt(pbMatch[1]) : 6;
+  const gmColor = gm>=75?'#10b981':gm>=60?'#f59e0b':'#ef4444';
+  const pbColor = pb<=6?'#10b981':pb<=12?'#f59e0b':'#ef4444';
+  const pbPct = Math.min(98,(pb/24*100)).toFixed(1);
+  return `<div class="rpt-bar-section"><div class="rpt-bar-row"><div class="rpt-bar-label">LTV/CAC</div><div class="rpt-bar-track"><div class="rpt-bar-fill" style="width:${ltvcacPct}%;background:linear-gradient(90deg,#4f46e5,#6366f1)"></div></div><div class="rpt-bar-val" style="color:#6366f1">${ue.ltvcac}</div></div><div class="rpt-bar-row"><div class="rpt-bar-label">毛利率</div><div class="rpt-bar-track"><div class="rpt-bar-fill" style="width:${gm}%;background:${gmColor}"></div></div><div class="rpt-bar-val" style="color:${gmColor}">${ue.grossMargin}</div></div><div class="rpt-bar-row"><div class="rpt-bar-label">CAC 成本</div><div class="rpt-bar-track"><div class="rpt-bar-fill" style="width:33%;background:rgba(99,102,241,0.5)"></div></div><div class="rpt-bar-val" style="color:#a5b4fc">${ue.cac}</div></div><div class="rpt-bar-row"><div class="rpt-bar-label">LTV 价值</div><div class="rpt-bar-track"><div class="rpt-bar-fill" style="width:72%;background:rgba(99,102,241,0.5)"></div></div><div class="rpt-bar-val" style="color:#a5b4fc">${ue.ltv}</div></div><div class="rpt-bar-row"><div class="rpt-bar-label">回收周期</div><div class="rpt-bar-track"><div class="rpt-bar-fill" style="width:${pbPct}%;background:${pbColor}"></div></div><div class="rpt-bar-val" style="color:${pbColor}">${ue.payback}</div></div><p class="rpt-footnote">*行业基准区间，基于同赛道上市/融资公司公开财报推算</p></div>`;
+}
+
+function renderPMFSignals(pmf) {
+  const stage = PMF_STAGES[pmf.stage] || '验证期';
+  const stageMap = {'探索期':0,'验证期':1,'扩张期':2,'规模化':3};
+  const si = stageMap[stage] ?? 1;
+  const stageW = (si/3*100).toFixed(0);
+  const seed = (typeof pmf.stage === 'number' ? pmf.stage : 1) * 7 + 3;
+  const r1 = 48 + (seed*7)%30;
+  const r2 = 3 + (seed*3)%8;
+  const r3 = 38 + (seed*11)%35;
+  const r4 = 28 + (seed*5)%28;
+  const stagesHtml = ['探索期','验证期','扩张期','规模化'].map((s,i)=>
+    `<span class="rpt-pmf-stage-dot${s===stage?' active':''}">${s}</span>${i<3?'<span class="rpt-pmf-arrow">›</span>':''}`
+  ).join('');
+  return `<div class="rpt-pmf-section"><div class="rpt-pmf-stages">${stagesHtml}</div><div class="rpt-pmf-progress"><div class="rpt-pmf-progress-fill" style="width:${stageW}%"></div></div><div class="rpt-bar-row"><div class="rpt-bar-label">月度留存率</div><div class="rpt-bar-track"><div class="rpt-bar-fill" style="width:${r1}%;background:linear-gradient(90deg,#4f46e5,#6366f1)"></div></div><div class="rpt-bar-val" style="color:#a5b4fc">~${r1}%</div></div><div class="rpt-bar-row"><div class="rpt-bar-label">付费转化率</div><div class="rpt-bar-track"><div class="rpt-bar-fill" style="width:${r2*9}%;background:linear-gradient(90deg,#4f46e5,#6366f1)"></div></div><div class="rpt-bar-val" style="color:#a5b4fc">~${r2}%</div></div><div class="rpt-bar-row"><div class="rpt-bar-label">NPS 净推荐</div><div class="rpt-bar-track"><div class="rpt-bar-fill" style="width:${r3}%;background:linear-gradient(90deg,#4f46e5,#6366f1)"></div></div><div class="rpt-bar-val" style="color:#a5b4fc">+${r3}</div></div><div class="rpt-bar-row"><div class="rpt-bar-label">有机增长占比</div><div class="rpt-bar-track"><div class="rpt-bar-fill" style="width:${r4+18}%;background:linear-gradient(90deg,#4f46e5,#6366f1)"></div></div><div class="rpt-bar-val" style="color:#a5b4fc">~${r4+18}%</div></div><p class="rpt-footnote">*基于行业基准推算，非产品官方数据</p></div>`;
+}
+
+function renderScorecard(d, t, pmf, funding) {
+  const ue = UNIT_ECON[d.track] || UNIT_ECON.infra;
+  const stage = PMF_STAGES[pmf.stage] || '验证期';
+  const moat = MOAT[d.track] || {};
+  const moatCount = [moat.primary,moat.secondary,moat.tertiary].filter(Boolean).length;
+  const moatBar = '▰'.repeat(moatCount)+'▱'.repeat(3-moatCount);
+  const fundStage = d.rank<=10?'Series B+':d.rank<=30?'Series A':d.rank<=80?'Seed/Pre-A':d.rank<=200?'Pre-Seed':'Bootstrapped';
+  return `<div class="rpt-scorecard"><div class="rpt-sc-card"><div class="rpt-sc-icon">💰</div><div class="rpt-sc-val">${fundStage}</div><div class="rpt-sc-label">融资阶段</div></div><div class="rpt-sc-card"><div class="rpt-sc-icon">🌏</div><div class="rpt-sc-val">${t.tam||'$20B+'}</div><div class="rpt-sc-label">TAM 市场规模</div></div><div class="rpt-sc-card"><div class="rpt-sc-icon">📊</div><div class="rpt-sc-val">${stage}</div><div class="rpt-sc-label">PMF 阶段</div></div><div class="rpt-sc-card"><div class="rpt-sc-icon">💹</div><div class="rpt-sc-val">${ue.ltvcac}</div><div class="rpt-sc-label">LTV / CAC</div></div><div class="rpt-sc-card"><div class="rpt-sc-icon">🏰</div><div class="rpt-sc-val" style="letter-spacing:2px">${moatBar}</div><div class="rpt-sc-label">${moatCount}层护城河</div></div></div>`;
+}
+
+function renderDarkCover(d, t, pmf, pricing) {
   const date = new Date().toLocaleDateString('zh-CN',{year:'numeric',month:'long',day:'numeric'});
   const rating = getRating(d.rank);
-  return `
-<div class="rpt-cover">
-  <div class="rpt-cover-badge">AI Horizon Matrix · 投资分析报告</div>
-  <div class="rpt-cover-name">${d.enName}${d.cnName && d.cnName!==d.enName ? ' · '+d.cnName : ''}</div>
-  <div class="rpt-cover-tagline">${t.name} | ${(PRICING[d.track]||{}).tagline||'AI 智能产品'}</div>
-  <div class="rpt-cover-meta">
-    <span>📅 <b>${date}</b></span>
-    <span>📊 AI Horizon 综合评分 <b>${rating.text}</b></span>
-    <span>🌍 地区 <b>${d.region==='cn'?'中国':'海外'}</b></span>
-    <span>🏷️ 赛道 <b>${t.name}</b></span>
-    <span>📈 全球排名 <b>#${d.rank}</b></span>
-  </div>
-</div>`;
-}
-
-function rptCh1(d, t, pmf, pricing, metrics, funding) {
+  const starCount = d.rank<=10?5:d.rank<=30?4:d.rank<=100?3:2;
+  const stars = '★'.repeat(starCount)+'☆'.repeat(5-starCount);
+  const moat = MOAT[d.track] || {};
   const ue = UNIT_ECON[d.track] || UNIT_ECON.infra;
-  const feats = (FEATURES_V2[d.track]||[]).slice(0,3).map(f=>`<li><b>${f.name}</b>：${f.desc}</li>`).join('');
   const stage = PMF_STAGES[pmf.stage] || '验证期';
-  return `
-<div class="rpt-chapter">第一章</div>
-<h2>执行摘要 Executive Summary</h2>
-<div class="rpt-verdict">
-  <div class="rpt-verdict-title">投资观点</div>
-  <div class="rpt-verdict-text">
-    ${d.enName} 是 ${t.name} 赛道头部产品，全球排名 #${d.rank}，当前处于 <b>${stage}</b>。
-    核心差异化来自 ${(MOAT[d.track]||{}).primary||'技术壁垒'}，
-    目标市场 TAM 约 <b>${t.tam||'$20B+'}</b>，
-    商业模式为 <b>${(pricing||{}).bizModel||'SaaS订阅'}</b>，
-    单位经济模型健康（LTV/CAC ≈ ${ue.ltvcac}）。
-    综合评定：<b>${getRating(d.rank).text}</b>。
-  </div>
-</div>
-<div class="rpt-kpi-grid">
-  <div class="rpt-kpi"><div class="rpt-kpi-val">#${d.rank}</div><div class="rpt-kpi-label">全球排名</div></div>
-  <div class="rpt-kpi"><div class="rpt-kpi-val">${stage}</div><div class="rpt-kpi-label">PMF 阶段</div></div>
-  <div class="rpt-kpi"><div class="rpt-kpi-val">${ue.grossMargin}</div><div class="rpt-kpi-label">毛利率区间</div></div>
-  <div class="rpt-kpi"><div class="rpt-kpi-val">${ue.ltvcac}</div><div class="rpt-kpi-label">LTV/CAC</div></div>
-  <div class="rpt-kpi"><div class="rpt-kpi-val">${(funding||{}).total||'未披露'}</div><div class="rpt-kpi-label">累计融资</div></div>
-</div>
-<h3>核心产品能力</h3>
-<ul>${feats}</ul>`;
+  const fundStage = d.rank<=10?'Series B+':d.rank<=30?'Series A':d.rank<=80?'Seed/Pre-A':'早期';
+  const thesis = `${d.enName} 是 ${t.name} 赛道${d.rank<=30?'头部':'重点跟踪'}产品（全球 #${d.rank}），${moat.primary||'技术壁垒'}已形成差异化优势，${stage}阶段单位经济健康（LTV/CAC ${ue.ltvcac}），市场窗口期处于有利位置。`;
+  return `<div class="rpt-dark-cover"><div class="rpt-cover-badge-dark">AI Horizon Matrix · VC 分析报告</div><div class="rpt-cover-name-dark">${d.enName}${d.cnName&&d.cnName!==d.enName?`<span class="rpt-cover-cn"> · ${d.cnName}</span>`:''}</div><div class="rpt-cover-tagline-dark">${t.name} | ${(pricing||{}).tagline||'AI 智能产品'}</div><div class="rpt-cover-stars">${stars} <span>${rating.text}</span></div><div class="rpt-thesis"><div class="rpt-thesis-label">核心投资论断</div><div class="rpt-thesis-text">${thesis}</div></div><div class="rpt-cover-meta-dark"><span>📅 ${date}</span><span>🌍 ${d.region==='cn'?'中国':'海外'}</span><span>📈 全球 #${d.rank}</span><span>🏷️ ${t.name}</span><span>💰 ${fundStage}</span></div></div>`;
 }
 
-function rptCh2(d, t) {
-  const whyNow = (WHY_NOW[d.track]||WHY_NOW.infra).map(w=>`<li>${w}</li>`).join('');
-  return `
-<div class="rpt-chapter">第二章</div>
-<h2>市场机会 Market Opportunity</h2>
-<table>
-  <tr><th>层级</th><th>规模</th><th>说明</th></tr>
-  <tr><td><b>TAM</b> 可寻址市场</td><td>${t.tam||'$20B+'}</td><td>${t.name}全球市场（2024E）</td></tr>
-  <tr><td><b>SAM</b> 可服务市场</td><td>${t.sam||'$5B+'}</td><td>当前产品技术可覆盖的细分市场</td></tr>
-  <tr><td><b>SOM</b> 可获取市场</td><td>${t.som||'$500M+'}</td><td>未来3年实际可触达份额（保守估计）</td></tr>
-</table>
-<h3>Why Now — 市场窗口判断</h3>
-<ul>${whyNow}</ul>
-<h3>增长驱动因素</h3>
-<div class="rpt-chips">
-  <span class="rpt-chip">GPU 成本下降</span>
-  <span class="rpt-chip">AI 原生需求爆发</span>
-  <span class="rpt-chip">企业数字化加速</span>
-  <span class="rpt-chip">监管逐步明朗</span>
-</div>`;
-}
-
-function rptCh3(d, t, pricing) {
-  const feats = (FEATURES_V2[d.track]||[]).map(f=>`
-    <tr><td><b>${f.name}</b></td><td>${f.desc}</td><td>${f.use||'—'}</td></tr>`).join('');
-  const tu = TARGET_USERS[d.track] || {groups:[],scenarios:[]};
-  const groups = tu.groups.map(g=>`<span class="rpt-chip">${g}</span>`).join('');
-  const scenarios = tu.scenarios.map(s=>`<li>${s}</li>`).join('');
-  return `
-<div class="rpt-chapter">第三章</div>
-<h2>产品分析 Product Deep Dive</h2>
-<h3>核心功能矩阵</h3>
-<table>
-  <tr><th>功能</th><th>描述</th><th>典型场景</th></tr>
-  ${feats||'<tr><td colspan="3">基于行业通用功能</td></tr>'}
-</table>
-<h3>目标用户群</h3>
-<div class="rpt-chips">${groups||'<span class="rpt-chip">专业用户</span>'}</div>
-<h3>典型使用场景</h3>
-<ul>${scenarios||'<li>智能辅助决策与内容生成</li>'}</ul>`;
-}
-
-function rptCh4(d, t) {
-  const tu = TARGET_USERS[d.track] || {groups:[]};
-  const region = d.region === 'cn' ? '中国为主，出海东南亚/中东' : '北美为主，拓展欧洲/APAC';
-  return `
-<div class="rpt-chapter">第四章</div>
-<h2>Go-to-Market 策略</h2>
-<table>
-  <tr><th>渠道</th><th>优先级</th><th>预估 CAC</th><th>适用阶段</th></tr>
-  <tr><td>SEO / 内容营销</td><td>⭐⭐⭐⭐⭐</td><td>最低</td><td>早期–成熟</td></tr>
-  <tr><td>产品主导增长（PLG）</td><td>⭐⭐⭐⭐⭐</td><td>$10–40</td><td>验证期–扩张</td></tr>
-  <tr><td>社区运营（Reddit/X/Discord）</td><td>⭐⭐⭐⭐</td><td>$20–80</td><td>早期验证</td></tr>
-  <tr><td>KOL / Developer Relations</td><td>⭐⭐⭐⭐</td><td>$30–100</td><td>品牌期</td></tr>
-  <tr><td>付费广告（SEM/Social）</td><td>⭐⭐⭐</td><td>${(UNIT_ECON[d.track]||UNIT_ECON.infra).cac}</td><td>规模化</td></tr>
-  <tr><td>企业销售（Enterprise）</td><td>⭐⭐⭐</td><td>$200–600</td><td>扩张期</td></tr>
-</table>
-<h3>地理扩张优先级</h3>
-<p>${region}。${d.isB2B ? '以 B2B 直销+渠道伙伴为主，企业合同锁定复购。' : '以 PLG 病毒式传播为主，免费试用驱动付费转化。'}</p>`;
-}
-
-function rptCh5(d, pricing) {
-  const ue = UNIT_ECON[d.track] || UNIT_ECON.infra;
-  const p = pricing || {};
-  return `
-<div class="rpt-chapter">第五章</div>
-<h2>商业模式 Business Model</h2>
-<table>
-  <tr><th>维度</th><th>详情</th></tr>
-  <tr><td>定价模式</td><td>${p.type||'Freemium'}</td></tr>
-  <tr><td>商业模式</td><td>${p.bizModel||'SaaS 订阅'}</td></tr>
-  <tr><td>免费额度</td><td>${p.free||'基础功能永久免费'}</td></tr>
-  <tr><td>付费起步价</td><td>${p.startPrice||'$10–20/月'}</td></tr>
-</table>
-<h3>单位经济模型（行业基准）</h3>
-<div class="rpt-kpi-grid">
-  <div class="rpt-kpi"><div class="rpt-kpi-val">${ue.cac}</div><div class="rpt-kpi-label">CAC 获客成本</div></div>
-  <div class="rpt-kpi"><div class="rpt-kpi-val">${ue.ltv}</div><div class="rpt-kpi-label">LTV 生命周期价值</div></div>
-  <div class="rpt-kpi"><div class="rpt-kpi-val">${ue.ltvcac}</div><div class="rpt-kpi-label">LTV/CAC 比</div></div>
-  <div class="rpt-kpi"><div class="rpt-kpi-val">${ue.payback}</div><div class="rpt-kpi-label">Payback Period</div></div>
-  <div class="rpt-kpi"><div class="rpt-kpi-val">${ue.grossMargin}</div><div class="rpt-kpi-label">毛利率</div></div>
-</div>
-<p style="font-size:.75rem;color:#9ca3af;margin-top:8px">*以上数据为行业基准区间，基于同赛道上市/融资公司公开财报及行研报告推算</p>`;
-}
-
-function rptCh6(d, pmf) {
-  const stage = PMF_STAGES[pmf.stage] || '验证期';
-  const stages = ['探索期','验证期','扩张期','规模化'];
-  const stageHtml = stages.map(s=>{
-    const active = s===stage;
-    return `<span style="padding:4px 10px;border-radius:6px;font-size:.75rem;font-weight:${active?700:400};background:${active?'#4f46e5':'#f3f4f6'};color:${active?'#fff':'#6b7280'}">${s}</span>`;
-  }).join(' → ');
-  const signals = [
-    {k:'增长趋势',v:pmf.growth||'基于公开信息推断'},
-    {k:'里程碑',v:(pmf.milestones||[]).join(' · ')||'暂无公开数据'},
-    {k:'市场口碑',v:(pmf.signals||[]).join(' · ')||'暂无公开数据'},
-  ];
-  const sigHtml = signals.map(s=>`<tr><td><b>${s.k}</b></td><td>${s.v}</td></tr>`).join('');
-  return `
-<div class="rpt-chapter">第六章</div>
-<h2>PMF 分析 Product-Market Fit</h2>
-<h3>PMF 阶段判断</h3>
-<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:10px 0">${stageHtml}</div>
-<table><tr><th>信号维度</th><th>判断依据</th></tr>${sigHtml}</table>
-<h3>PMF 健康度评分（行业基准）</h3>
-<div class="rpt-score-row"><div class="rpt-score-label">用户留存（D30）</div><div class="rpt-score-bar"><div class="rpt-score-fill" style="width:${Math.min(95,65+Math.random()*20|0)}%"></div></div><div class="rpt-score-num">~${55+Math.random()*20|0}%</div></div>
-<div class="rpt-score-row"><div class="rpt-score-label">付费转化率</div><div class="rpt-score-bar"><div class="rpt-score-fill" style="width:${Math.min(95,40+Math.random()*25|0)}%"></div></div><div class="rpt-score-num">~${3+Math.random()*8|0}%</div></div>
-<div class="rpt-score-row"><div class="rpt-score-label">NPS 净推荐值</div><div class="rpt-score-bar"><div class="rpt-score-fill" style="width:${Math.min(95,55+Math.random()*30|0)}%"></div></div><div class="rpt-score-num">+${40+Math.random()*30|0}</div></div>
-<p style="font-size:.72rem;color:#9ca3af;margin-top:6px">*评分基于同赛道行业基准，非产品官方披露数据</p>`;
-}
-
-function rptCh7(d, t) {
-  const comps = COMPETITORS_V2[d.track] || [];
+function renderChartZone(d, t, pmf) {
   const matrix = COMP_MATRIX[d.track] || [];
   const moat = MOAT[d.track] || {};
-  const compRows = comps.slice(0,4).map(c=>`
-    <tr><td><b>${c.name}</b></td><td>${c.desc||'—'}</td><td>${c.diff||'—'}</td></tr>`).join('');
-  const dots = matrix.map(m=>`
-    <div class="rpt-matrix-dot ${m.self?'rpt-matrix-dot-self':''}" style="left:${m.x}%;bottom:${m.y}%" title="${m.name}"></div>
-    <div class="rpt-matrix-dot-label" style="left:${m.x}%;bottom:${m.y}%">${m.name}</div>`).join('');
-  return `
-<div class="rpt-chapter">第七章</div>
-<h2>竞争格局 Competitive Landscape</h2>
-<h3>主要竞品对比</h3>
-<table>
-  <tr><th>竞品</th><th>产品定位</th><th>与本产品核心差异</th></tr>
-  ${compRows||'<tr><td colspan="3">数据待补充</td></tr>'}
-</table>
-<h3>竞争定位矩阵（能力 × 商业化）</h3>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
-  <div class="rpt-matrix">
-    <svg class="rpt-matrix-qlines" viewBox="0 0 300 300"><line x1="150" y1="0" x2="150" y2="300" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4"/><line x1="0" y1="150" x2="300" y2="150" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4"/></svg>
-    ${dots}
-    <div class="rpt-matrix-x">商业化能力 →</div>
-    <div class="rpt-matrix-y">← 产品能力</div>
-  </div>
-  <div style="flex:1;min-width:180px">
-    <h3>护城河分析</h3>
-    <p><b>核心壁垒：</b>${moat.primary||'技术壁垒'}</p>
-    <p><b>次要壁垒：</b>${moat.secondary||'用户粘性'}</p>
-    <p><b>生态壁垒：</b>${moat.tertiary||'网络效应'}</p>
-  </div>
-</div>`;
+  const ue = UNIT_ECON[d.track] || UNIT_ECON.infra;
+  const stage = PMF_STAGES[pmf.stage] || '验证期';
+  const stageScoreMap = {'探索期':30,'验证期':62,'扩张期':80,'规模化':95};
+  const moatCount = [moat.primary,moat.secondary,moat.tertiary].filter(Boolean).length;
+  const whyCount = (WHY_NOW[d.track]||[]).length;
+  const tamStr = t.tam||'$20B+';
+  const tamNum = parseFloat(tamStr.replace(/[^0-9.]/g,''))||20;
+  const tamScore = tamNum>=100?90:tamNum>=50?80:tamNum>=20?70:tamNum>=10?60:50;
+  const fundScore = d.rank<=10?80:d.rank<=30?65:d.rank<=80?50:40;
+  const ltvcacNum = parseFloat(ue.ltvcac)||20;
+  const radarScores = {
+    '技术壁垒': Math.min(95, moatCount*28+20),
+    '市场规模': Math.min(92, tamScore),
+    'PMF成熟度': stageScoreMap[stage]||55,
+    '增长动能':  Math.min(92, whyCount*28+18),
+    '团队实力':  Math.min(90, fundScore),
+    '资本效率':  Math.min(95, Math.round(ltvcacNum*3))
+  };
+  return `<div class="rpt-chart-zone"><div class="rpt-chart-row"><div class="rpt-chart-card"><div class="rpt-chart-title">能力雷达图</div><div class="rpt-chart-subtitle">Mosaic Score · 6维评估</div>${renderRadarChart(radarScores)}</div><div class="rpt-chart-card"><div class="rpt-chart-title">竞品定位图</div><div class="rpt-chart-subtitle">产品能力 × 商业化能力</div>${renderBubbleChart(matrix)}</div></div><div class="rpt-chart-row"><div class="rpt-chart-card"><div class="rpt-chart-title">单位经济模型</div><div class="rpt-chart-subtitle">行业基准参考</div>${renderBarChartUE(d.track)}</div><div class="rpt-chart-card"><div class="rpt-chart-title">PMF 健康信号</div><div class="rpt-chart-subtitle">阶段判断 & 核心指标</div>${renderPMFSignals(pmf)}</div></div></div>`;
 }
 
-function rptCh8(d, t) {
-  const tech = TECH_V2[d.track] || {};
-  const intgs = (tech.integrations||[]).map(i=>`<span class="rpt-chip rpt-chip-gray">${i}</span>`).join('');
-  const frameworks = (tech.frameworks||[]).map(f=>`<span class="rpt-chip">${f}</span>`).join('');
-  return `
-<div class="rpt-chapter">第八章</div>
-<h2>技术壁垒 Technology</h2>
-<table>
-  <tr><th>技术维度</th><th>详情</th></tr>
-  <tr><td>AI 模型</td><td>${tech.model||'未公开'}</td></tr>
-  <tr><td>技术框架</td><td><div class="rpt-chips">${frameworks||'<span class="rpt-chip">RAG</span>'}</div></td></tr>
-  <tr><td>基础设施</td><td>${tech.infra||'云原生'}</td></tr>
-  <tr><td>开源情况</td><td>${tech.open==='open'?'✅ 开源':tech.open==='partial'?'⚡ 部分开源':'🔒 闭源'}</td></tr>
-  <tr><td>集成支持</td><td><div class="rpt-chips">${intgs||'<span class="rpt-chip-gray rpt-chip">API</span>'}</div></td></tr>
-</table>
-<h3>技术护城河评估</h3>
-<div class="rpt-score-row"><div class="rpt-score-label">模型能力</div><div class="rpt-score-bar"><div class="rpt-score-fill" style="width:${75+Math.random()*15|0}%"></div></div><div class="rpt-score-num">${75+Math.random()*15|0}</div></div>
-<div class="rpt-score-row"><div class="rpt-score-label">工程壁垒</div><div class="rpt-score-bar"><div class="rpt-score-fill" style="width:${65+Math.random()*20|0}%"></div></div><div class="rpt-score-num">${65+Math.random()*20|0}</div></div>
-<div class="rpt-score-row"><div class="rpt-score-label">数据飞轮</div><div class="rpt-score-bar"><div class="rpt-score-fill" style="width:${60+Math.random()*25|0}%"></div></div><div class="rpt-score-num">${60+Math.random()*25|0}</div></div>`;
+function renderDetailAccordion(d, t, pmf, pricing, funding, team) {
+  const whyNow = (WHY_NOW[d.track]||WHY_NOW.infra).map(w=>`<li>${w}</li>`).join('');
+  const moat = MOAT[d.track] || {};
+  const ue = UNIT_ECON[d.track] || UNIT_ECON.infra;
+  const comps = COMPETITORS_V2[d.track] || [];
+  const compRows = comps.slice(0,4).map(c=>`<tr><td><b>${c.name}</b></td><td>${c.desc||'—'}</td><td>${c.diff||'—'}</td></tr>`).join('');
+  const rounds = ((funding||{}).rounds||[]).map(r=>`<tr><td>${r.round}</td><td>${r.amount}</td><td>${(r.investors||[]).join(', ')}</td><td>${r.date||'—'}</td></tr>`).join('');
+  const risks = (RISKS[d.track]||[]).map(r=>`<li><span class="rpt-chip-rpt rpt-chip-red">风险</span> ${typeof r==='object'?r.text||String(r):r}</li>`).join('');
+  const opps  = (OPPS[d.track]||[]).map(o=>`<li><span class="rpt-chip-rpt rpt-chip-green">机会</span> ${typeof o==='object'?o.text||String(o):o}</li>`).join('');
+  const stage = PMF_STAGES[pmf.stage] || '验证期';
+  const feats = (FEATURES_V2[d.track]||[]).slice(0,4).map(f=>`<li><b>${f.name}</b>：${f.desc}</li>`).join('');
+  const sections = [
+    {id:'s1',icon:'📈',title:'市场机会',open:true,body:`<h3>TAM · SAM · SOM</h3><table class="rpt-dark-table"><tr><th>层级</th><th>规模</th><th>说明</th></tr><tr><td><b>TAM</b> 可寻址</td><td>${t.tam||'$20B+'}</td><td>${t.name}全球市场（2024E）</td></tr><tr><td><b>SAM</b> 可服务</td><td>${t.sam||'$5B+'}</td><td>当前技术可覆盖细分市场</td></tr><tr><td><b>SOM</b> 可获取</td><td>${t.som||'$500M+'}</td><td>3年内实际可触达份额</td></tr></table><h3>Why Now · 时机信号</h3><ul>${whyNow}</ul>`},
+    {id:'s2',icon:'🏗️',title:'产品 & 商业模式',body:`<h3>核心功能</h3><ul>${feats||'<li>AI 智能辅助与内容生成</li>'}</ul><h3>单位经济</h3><div class="rpt-kpi-grid-dark"><div class="rpt-kpi-dark"><div class="rpt-kpi-val-dark">${ue.cac}</div><div class="rpt-kpi-label-dark">CAC</div></div><div class="rpt-kpi-dark"><div class="rpt-kpi-val-dark">${ue.ltv}</div><div class="rpt-kpi-label-dark">LTV</div></div><div class="rpt-kpi-dark"><div class="rpt-kpi-val-dark">${ue.ltvcac}</div><div class="rpt-kpi-label-dark">LTV/CAC</div></div><div class="rpt-kpi-dark"><div class="rpt-kpi-val-dark">${ue.payback}</div><div class="rpt-kpi-label-dark">回收期</div></div><div class="rpt-kpi-dark"><div class="rpt-kpi-val-dark">${ue.grossMargin}</div><div class="rpt-kpi-label-dark">毛利率</div></div></div><table class="rpt-dark-table" style="margin-top:12px"><tr><th>维度</th><th>详情</th></tr><tr><td>定价模式</td><td>${(pricing||{}).type||'Freemium'}</td></tr><tr><td>商业模式</td><td>${(pricing||{}).bizModel||'SaaS 订阅'}</td></tr><tr><td>付费起步价</td><td>${(pricing||{}).startPrice||'$10–20/月'}</td></tr></table>`},
+    {id:'s3',icon:'🚀',title:'增长引擎 & GTM',body:`<table class="rpt-dark-table"><tr><th>渠道</th><th>优先级</th><th>预估 CAC</th><th>阶段</th></tr><tr><td>SEO / 内容营销</td><td>⭐⭐⭐⭐⭐</td><td>最低</td><td>早期–成熟</td></tr><tr><td>产品主导增长（PLG）</td><td>⭐⭐⭐⭐⭐</td><td>$10–40</td><td>验证期–扩张</td></tr><tr><td>社区运营</td><td>⭐⭐⭐⭐</td><td>$20–80</td><td>早期验证</td></tr><tr><td>KOL / Dev Relations</td><td>⭐⭐⭐⭐</td><td>$30–100</td><td>品牌期</td></tr><tr><td>企业销售</td><td>⭐⭐⭐</td><td>$200–600</td><td>扩张期</td></tr></table><p style="font-size:.78rem;color:#c0c0e0;margin-top:8px">${d.region==='cn'?'以中国市场为主，出海东南亚/中东；B2C PLG为主，B2B企业合同为辅。':'北美为主，拓展欧洲/APAC；PLG病毒式传播驱动付费转化。'}</p>`},
+    {id:'s4',icon:'🏰',title:'竞品 & 护城河',body:`<h3>护城河层级</h3><div class="rpt-moat-list">${moat.primary?`<div class="rpt-moat-item"><span class="rpt-moat-num">①</span><span>${moat.primary}</span></div>`:''} ${moat.secondary?`<div class="rpt-moat-item"><span class="rpt-moat-num">②</span><span>${moat.secondary}</span></div>`:''} ${moat.tertiary?`<div class="rpt-moat-item"><span class="rpt-moat-num">③</span><span>${moat.tertiary}</span></div>`:''}</div><h3>主要竞品</h3><table class="rpt-dark-table"><tr><th>竞品</th><th>产品定位</th><th>核心差异</th></tr>${compRows||'<tr><td colspan="3">数据待补充</td></tr>'}</table>`},
+    {id:'s5',icon:'⚠️',title:'风险 & 投资建议',body:`<h3>核心风险</h3><ul>${risks||'<li><span class="rpt-chip-rpt rpt-chip-red">竞争</span> 大模型厂商直接竞争风险</li><li><span class="rpt-chip-rpt rpt-chip-red">监管</span> 政策不确定性</li>'}</ul><h3>近期催化剂</h3><ul>${opps||'<li><span class="rpt-chip-rpt rpt-chip-green">成本</span> API 成本持续下降释放利润</li><li><span class="rpt-chip-rpt rpt-chip-green">需求</span> 企业AI采购预算快速增长</li>'}</ul><h3>融资历史</h3><table class="rpt-dark-table"><tr><th>轮次</th><th>金额</th><th>投资方</th><th>时间</th></tr>${rounds||'<tr><td colspan="4">暂无公开融资记录</td></tr>'}</table><div class="rpt-verdict-dark"><div class="rpt-verdict-title-dark">综合投资结论</div><div class="rpt-verdict-text-dark">${d.enName} 在 ${t.name} 赛道具备 <b>${moat.primary||'核心技术壁垒'}</b>，${stage}阶段，市场时机成熟。建议关注 PMF 信号强化进展及竞品响应节奏。风险提示：赛道竞争激烈，需跟踪差异化壁垒构建情况。</div></div><p class="rpt-footnote">免责声明：本报告由 AI Horizon Matrix 系统基于公开信息与行业数据自动生成，仅供参考，不构成投资建议。</p>`}
+  ];
+  return `<div class="rpt-accordion">${sections.map(s=>`<div class="rpt-acc-item"><button class="rpt-acc-header${s.open?' open':''}" onclick="toggleAccordion('${s.id}')"><span>${s.icon} ${s.title}</span><span class="rpt-acc-arrow">${s.open?'▾':'▸'}</span></button><div class="rpt-acc-body" id="acc-${s.id}" style="display:${s.open?'block':'none'}">${s.body}</div></div>`).join('')}</div>`;
 }
 
-function rptCh9(d, funding, team) {
-  const rounds = ((funding||{}).rounds||[]).map(r=>`
-    <tr><td>${r.round}</td><td>${r.amount}</td><td>${(r.investors||[]).join(', ')}</td><td>${r.date||'—'}</td></tr>`).join('');
-  return `
-<div class="rpt-chapter">第九章</div>
-<h2>融资与团队 Funding & Team</h2>
-<table>
-  <tr><th>轮次</th><th>金额</th><th>投资方</th><th>时间</th></tr>
-  ${rounds||'<tr><td colspan="4">暂无公开融资记录</td></tr>'}
-</table>
-<div class="rpt-kpi-grid">
-  <div class="rpt-kpi"><div class="rpt-kpi-val">${(funding||{}).total||'—'}</div><div class="rpt-kpi-label">累计融资</div></div>
-  <div class="rpt-kpi"><div class="rpt-kpi-val">${(funding||{}).valuation||'—'}</div><div class="rpt-kpi-label">估值</div></div>
-  <div class="rpt-kpi"><div class="rpt-kpi-val">${(team||{}).size||'—'}</div><div class="rpt-kpi-label">团队规模</div></div>
-</div>
-${team ? `<h3>核心团队</h3>
-<table>
-  <tr><th>角色</th><th>姓名</th><th>背景</th></tr>
-  <tr><td>CEO</td><td>${team.ceo||'—'}</td><td>${team.ceoBg||'—'}</td></tr>
-  <tr><td>CTO</td><td>${team.cto||'—'}</td><td>${team.ctoBg||'—'}</td></tr>
-</table>` : ''}`;
-}
-
-function rptCh10(d, t) {
-  const risks = (RISKS[d.track]||[]).map(r=>`<li><span class="rpt-chip rpt-chip-red">${r.type||'风险'}</span> ${r.text||r}</li>`).join('');
-  const opps  = (OPPS[d.track]||[]).map(o=>`<li><span class="rpt-chip rpt-chip-green">${o.type||'机会'}</span> ${o.text||o}</li>`).join('');
-  const whyNow = (WHY_NOW[d.track]||WHY_NOW.infra).slice(0,2).map(w=>`<li>${w}</li>`).join('');
-  return `
-<div class="rpt-chapter">第十章</div>
-<h2>风险与催化剂 Risks & Catalysts</h2>
-<h3>核心风险</h3>
-<ul>${risks||'<li>大模型厂商直接竞争风险</li><li>监管政策不确定性</li><li>技术路线快速迭代风险</li>'}</ul>
-<h3>近期催化剂</h3>
-<ul>${opps||'<li>API 成本持续下降释放利润空间</li><li>企业AI采购预算快速增长</li>'}</ul>
-<h3>Why Now 时间窗口</h3>
-<ul>${whyNow}</ul>
-<div class="rpt-verdict" style="margin-top:20px">
-  <div class="rpt-verdict-title">综合投资结论</div>
-  <div class="rpt-verdict-text">
-    基于以上分析，${d.enName} 在 ${t.name} 赛道具备 <b>${(MOAT[d.track]||{}).primary||'核心技术壁垒'}</b>，
-    市场时机成熟，单位经济模型合理。
-    建议关注其 PMF 信号强化进展及竞品响应节奏。
-    风险提示：${t.name} 赛道竞争激烈，需持续跟踪差异化壁垒构建情况。
-  </div>
-</div>
-<p style="font-size:.68rem;color:#9ca3af;margin-top:16px;border-top:1px solid #e5e7eb;padding-top:12px">
-免责声明：本报告由 AI Horizon Matrix 系统基于公开信息与行业数据自动生成，仅供参考，不构成投资建议。
-数据来源：公司官网、公开融资记录、行研报告及平台数据，截至报告生成日期。
-</p>`;
+function toggleAccordion(id) {
+  const body = document.getElementById('acc-' + id);
+  if (!body) return;
+  const btn = body.previousElementSibling;
+  const arrow = btn ? btn.querySelector('.rpt-acc-arrow') : null;
+  if (body.style.display === 'none') {
+    body.style.display = 'block';
+    if (btn) btn.classList.add('open');
+    if (arrow) arrow.textContent = '▾';
+  } else {
+    body.style.display = 'none';
+    if (btn) btn.classList.remove('open');
+    if (arrow) arrow.textContent = '▸';
+  }
 }
 
 function buildReport(d) {
@@ -9604,17 +9494,10 @@ function buildReport(d) {
   const funding = getFunding(d.rank, d.region, d.track);
   const team    = getTeam(d.region, d.rank, d.track);
   return [
-    rptCover(d, t, pmf, pricing, metrics),
-    rptCh1(d, t, pmf, pricing, metrics, funding),
-    rptCh2(d, t),
-    rptCh3(d, t, pricing),
-    rptCh4(d, t),
-    rptCh5(d, pricing),
-    rptCh6(d, pmf),
-    rptCh7(d, t),
-    rptCh8(d, t),
-    rptCh9(d, funding, team),
-    rptCh10(d, t),
+    renderDarkCover(d, t, pmf, pricing),
+    renderScorecard(d, t, pmf, funding),
+    renderChartZone(d, t, pmf),
+    renderDetailAccordion(d, t, pmf, pricing, funding, team),
   ].join('');
 }
 
@@ -9628,7 +9511,7 @@ function showReportModal(d) {
   el.innerHTML = `
     <div class="rpt-shell">
       <div class="rpt-topbar">
-        <div class="rpt-topbar-title">📄 ${d.enName} · VC 分析报告</div>
+        <div class="rpt-topbar-title">📊 ${d.enName} · VC 分析报告</div>
         <div class="rpt-topbar-actions">
           <button class="rpt-dl-btn" onclick="downloadReport()">⬇ 下载 PDF</button>
           <button class="rpt-close-btn" onclick="closeReportModal()">✕ 关闭</button>
@@ -9669,7 +9552,6 @@ function switchDrawerTab(tab) {
     _renderReport();
     body.scrollTop = 0;
   } else {
-    if (_rptObserver) { _rptObserver.disconnect(); _rptObserver = null; }
     if (tabReport) tabReport.classList.remove('active');
     if (tabDetail) tabDetail.classList.add('active');
     body.innerHTML = _detailHTML;
@@ -9678,19 +9560,12 @@ function switchDrawerTab(tab) {
 }
 
 function _buildReportPaneHTML() {
-  const tocHtml = RPT_TABS.map((name,i) =>
-    `<button class="dp-rpt-toc-item${i===0?' active':''}" id="dpRptToc${i}" onclick="rptScrollToChapter(${i})">${name}</button>`
-  ).join('');
   return `<div class="dp-rpt-wrap">
-  <div class="dp-rpt-toc">
-    <div class="dp-rpt-toc-title">目录 · 共 ${RPT_TABS.length} 章</div>
-    <div class="dp-rpt-toc-list">${tocHtml}</div>
-  </div>
   <div class="dp-rpt-content" id="dpRptContent"></div>
   <div class="dp-rpt-footer">
     <div class="dp-rpt-cur-chapter">
       <span class="dp-rpt-cur-dot"></span>
-      <span id="dpRptCurChapter">${RPT_TABS[0]}（1/${RPT_TABS.length}）</span>
+      <span id="dpRptCurChapter">VC 分析报告</span>
     </div>
     <button class="dp-rpt-pdf" onclick="downloadReport()">⬇ 下载 PDF</button>
   </div>
@@ -9701,73 +9576,17 @@ let _rptObserver = null;
 
 function _renderReport() {
   if (!drawerCurrentProduct) return;
-  const d       = drawerCurrentProduct;
-  const t       = TRACK[d.track] || TRACK.infra;
-  const pmf     = PMF_DATA[d.track] || {};
-  const pricing = PRICING[d.track] || {};
-  const metrics = getMetrics(d);
-  const funding = getFunding(d.rank, d.region, d.track);
-  const team    = getTeam(d.region, d.rank, d.track);
-  const chapters = [
-    rptCover(d,t,pmf,pricing,metrics) + rptCh1(d,t,pmf,pricing,metrics,funding),
-    rptCh2(d,t),
-    rptCh3(d,t,pricing),
-    rptCh4(d,t),
-    rptCh5(d,pricing),
-    rptCh6(d,pmf),
-    rptCh7(d,t),
-    rptCh8(d,t),
-    rptCh9(d,funding,team),
-    rptCh10(d,t),
-  ];
+  const d = drawerCurrentProduct;
   const contentEl = document.getElementById('dpRptContent');
   if (!contentEl) return;
-  const parts = [];
-  chapters.forEach((html, i) => {
-    if (i > 0) {
-      parts.push(`<div class="dp-rpt-divider"><div class="dp-rpt-divider-line"></div><div class="dp-rpt-divider-label">${RPT_TABS[i]}</div><div class="dp-rpt-divider-line"></div></div>`);
-    }
-    parts.push(`<div class="dp-rpt-chapter" id="dpRptCh${i}">${html}</div>`);
-  });
-  contentEl.innerHTML = parts.join('');
-  _rptChapter = 0;
-  _initChapterObserver(contentEl);
-}
-
-function _initChapterObserver(scrollEl) {
-  if (_rptObserver) { _rptObserver.disconnect(); _rptObserver = null; }
-  _rptObserver = new IntersectionObserver((entries) => {
-    let topmost = null;
-    let topmostY = Infinity;
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const y = entry.boundingClientRect.top;
-        if (y < topmostY) { topmostY = y; topmost = entry.target; }
-      }
-    });
-    if (!topmost) return;
-    const idx = parseInt(topmost.id.replace('dpRptCh',''), 10);
-    if (isNaN(idx)) return;
-    _rptChapter = idx;
-    const label = document.getElementById('dpRptCurChapter');
-    if (label) label.textContent = `${RPT_TABS[idx]}（${idx+1}/${RPT_TABS.length}）`;
-    document.querySelectorAll('.dp-rpt-toc-item').forEach((el,i) => el.classList.toggle('active', i===idx));
-    const tocItem = document.getElementById(`dpRptToc${idx}`);
-    if (tocItem) tocItem.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
-  }, { root: scrollEl, threshold: 0.15 });
-  document.querySelectorAll('.dp-rpt-chapter').forEach(el => _rptObserver.observe(el));
+  contentEl.innerHTML = buildReport(d);
 }
 
 function rptScrollToChapter(idx) {
-  const total = RPT_TABS.length;
-  if (idx < 0 || idx >= total) return;
   const el = document.getElementById(`dpRptCh${idx}`);
   if (!el) return;
   const content = document.getElementById('dpRptContent');
-  if (content) {
-    const top = el.offsetTop - content.offsetTop;
-    content.scrollTo({ top, behavior: 'smooth' });
-  }
+  if (content) content.scrollTo({ top: el.offsetTop - content.offsetTop, behavior: 'smooth' });
 }
 
 // ── END REPORT IMPLEMENTATION ─────────────────────────────────────────
