@@ -35,33 +35,16 @@ nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(6,6,18,0.92);bac
 .nav-cta{background:var(--g1);border:none;color:#fff;padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;transition:opacity .2s}
 .nav-cta:hover{opacity:.85}
 
-/* ── HERO ── */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 20%,rgba(99,102,241,.15) 0%,transparent 60%)}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.04) 1px,transparent 1px);background-size:60px 60px}
-.hero-content{position:relative;z-index:1;max-width:800px}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.4);border-radius:20px;padding:5px 14px;font-size:12px;color:#a5b4fc;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
-.badge-dot{width:6px;height:6px;background:#6366f1;border-radius:50%;animation:blink 1.5s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:800;line-height:1.15;margin-bottom:20px}
-.hero h1 .grad{background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero h1 .grad2{background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-desc{font-size:1.05rem;color:var(--muted2);max-width:560px;margin:0 auto 40px;line-height:1.8}
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn-primary{background:var(--g1);color:#fff;padding:12px 28px;border-radius:24px;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(99,102,241,.4)}
-.btn-outline{background:transparent;color:var(--text);padding:12px 28px;border-radius:24px;font-size:14px;font-weight:600;border:1px solid var(--border);cursor:pointer;transition:border-color .2s,color .2s}
-.btn-outline:hover{border-color:#6366f1;color:#a5b4fc}
-.hero-stats{display:flex;gap:40px;justify-content:center;margin-top:60px;flex-wrap:wrap}
-.hero-stat{text-align:center}
-.hero-stat .num{font-size:2rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-stat .label{font-size:12px;color:var(--muted);margin-top:2px}
 
 /* ── SECTION BASE ── */
-.section{max-width:1200px;margin:0 auto;padding:80px 24px}
+.section{max-width:1200px;margin:0 auto;padding:100px 24px 80px}
 .section-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#6366f1;margin-bottom:10px;font-weight:600}
 .section-title{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;margin-bottom:14px;color:#e0e7ff}
-.section-desc{color:var(--muted2);max-width:640px;margin-bottom:48px;font-size:.95rem;line-height:1.8}
+.section-desc{color:var(--muted2);max-width:640px;margin-bottom:20px;font-size:.95rem;line-height:1.8}
+.rank-header-stats{display:flex;gap:32px;margin-bottom:36px;flex-wrap:wrap}
+.rhs-item{display:flex;align-items:center;gap:8px}
+.rhs-num{font-size:1.1rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.rhs-label{font-size:.78rem;color:var(--muted)}
 hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 
 /* ── DATA SOURCES ── */
@@ -211,7 +194,7 @@ footer .logo-text{font-size:1.2rem;font-weight:800;background:var(--g1);-webkit-
 @media(max-width:640px){
   nav{padding:0 16px}
   .nav-menu{display:none}
-  .section{padding:60px 16px}
+  .section{padding:80px 16px 60px}
   .rank-item{grid-template-columns:40px 1fr}
   .rank-meta{display:none}
 }
@@ -507,32 +490,17 @@ footer .logo-text{font-size:1.2rem;font-weight:800;background:var(--g1);-webkit-
   <button class="nav-cta">申请早期访问</button>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge"><span class="badge-dot"></span>全球AI创业情报平台</div>
-    <h1>发现下一个<br><span class="grad">AI独角兽</span>，<br>在它成为<span class="grad2">独角兽</span>之前</h1>
-    <p class="hero-desc">AI Horizon Matrix 通过自动化数据采集、行业智能分类和深度分析，为AI创业者提供灵感发现、深度洞察与决策支持三重价值。</p>
-    <div class="hero-btns">
-      <button class="btn-primary" onclick="document.getElementById('rankings').scrollIntoView()">探索排行榜</button>
-      <button class="btn-outline" onclick="document.getElementById('rankings').scrollIntoView()">查看排行榜</button>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="num">200+</div><div class="label">全球数据源</div></div>
-      <div class="hero-stat"><div class="num">12</div><div class="label">一级行业分类</div></div>
-      <div class="hero-stat"><div class="num">5,000+</div><div class="label">追踪产品数</div></div>
-      <div class="hero-stat"><div class="num">24h</div><div class="label">数据更新周期</div></div>
-    </div>
-  </div>
-</div>
-
 <!-- RANKINGS -->
 <section class="section" id="rankings">
   <div class="section-label">排行榜系统</div>
   <h2 class="section-title">Seed Vault × Growth Catalyst 双层榜单</h2>
   <p class="section-desc">早期潜力榜（Seed Vault）与成长实力榜（Growth Catalyst）双轨并行，全面覆盖AI创业生命周期。数据抓取周期覆盖过去 90 天，每日自动更新。</p>
+  <div class="rank-header-stats">
+    <div class="rhs-item"><span class="rhs-num">5,000+</span><span class="rhs-label">追踪产品</span></div>
+    <div class="rhs-item"><span class="rhs-num">200+</span><span class="rhs-label">全球数据源</span></div>
+    <div class="rhs-item"><span class="rhs-num">12</span><span class="rhs-label">一级行业分类</span></div>
+    <div class="rhs-item"><span class="rhs-num">24h</span><span class="rhs-label">数据更新周期</span></div>
+  </div>
 
   <div class="rank-tabs">
     <button class="rtab active" onclick="switchRank('seed',this)">🌱 Seed Vault 潜力榜</button>
