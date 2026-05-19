@@ -9332,6 +9332,15 @@ const UNIT_ECON = {
   legal:     {cac:'$200–600',ltv:'$3,000–12,000',ltvcac:'20×',payback:'8–16mo',grossMargin:'75–83%'},
   sales:     {cac:'$100–350',ltv:'$1,500–6,000',ltvcac:'18×',payback:'6–12mo',grossMargin:'72–80%'},
   hr:        {cac:'$100–300',ltv:'$1,200–4,800',ltvcac:'16×',payback:'6–12mo',grossMargin:'70–78%'},
+  // ── 12 product-track keys
+  social:       {cac:'$8–25',   ltv:'$80–300',    ltvcac:'12×', payback:'2–5mo',  grossMargin:'75–85%'},
+  emotion:      {cac:'$15–45',  ltv:'$150–600',   ltvcac:'14×', payback:'3–6mo',  grossMargin:'72–82%'},
+  content:      {cac:'$30–90',  ltv:'$600–2,400', ltvcac:'20×', payback:'3–6mo',  grossMargin:'78–86%'},
+  enterprise:   {cac:'$150–500',ltv:'$3,000–15,000',ltvcac:'24×',payback:'8–14mo',grossMargin:'74–82%'},
+  productivity: {cac:'$12–40',  ltv:'$200–800',   ltvcac:'18×', payback:'3–6mo',  grossMargin:'76–84%'},
+  entertainment:{cac:'$5–18',   ltv:'$60–240',    ltvcac:'13×', payback:'2–5mo',  grossMargin:'65–76%'},
+  retail:       {cac:'$200–800',ltv:'$4,000–20,000',ltvcac:'22×',payback:'8–16mo',grossMargin:'70–80%'},
+  professional: {cac:'$180–600',ltv:'$3,000–12,000',ltvcac:'20×',payback:'8–16mo',grossMargin:'75–83%'},
 };
 
 const WHY_NOW = {
@@ -9354,6 +9363,15 @@ const WHY_NOW = {
   legal:     ['LLM 合同理解能力验证','法律服务成本高企','中小企业法务数字化需求'],
   sales:     ['CRM + AI 整合成为标配','SDR 外包成本高企','数据驱动销售文化普及'],
   hr:        ['大厂裁员释放大量人才','远程招聘全球化','HR Tech 数字化转型加速'],
+  // ── 12 product-track keys
+  social:       ['AI兴趣图谱技术成熟（2024 Graph Neural Networks商业化）','Z世代社交焦虑加剧，有效连接稀缺','传统社交平台算法不透明引发用户迁移'],
+  emotion:      ['大模型情感理解能力突破（2023 GPT-4情感对话验证）','疫情后心理健康需求激增（全球心理困扰人数+25%）','企业ESG推动员工心理健康福利标配化'],
+  content:      ['多模态大模型（GPT-4o/Claude 3.5）内容质量达商用级','内容生产成本被AI压缩80%，竞争门槛提高','品牌内容需求爆炸（TikTok/短视频渗透率持续提升）'],
+  enterprise:   ['企业AI预算增速>40% YoY（IDC 2024报告）','RAG技术成熟降低LLM幻觉风险，企业场景可信度提升','大厂裁员潮倒逼自动化替代人工效率诉求'],
+  productivity: ['深度工作意识觉醒（Newport《深度工作》全球热销）','混合办公常态化加剧信息碎片化问题','AI原生工具取代传统SaaS的替代窗口期开启'],
+  entertainment:['生成式AI内容创作成本降至传统1/10','玩家对固化NPC/剧情容忍度降低（游戏退款率上升）','独立游戏爆发期，AI内容工具是小团队唯一出路'],
+  retail:       ['电商竞争白热化，毛利保卫战推动精细化运营','消费者行为数据爆炸，人工分析速度跟不上','供应链重构推动本地化预测需求（post-COVID去全球化）'],
+  professional: ['LLM合同/法律文件理解能力验证（GPT-4 Bar Exam通过率>90%）','律所/会计所人力成本持续上涨推动数字化','中小企业法务数字化刚需（合规成本压力）'],
 };
 
 const MOAT = {
@@ -9376,6 +9394,15 @@ const MOAT = {
   legal:     {primary:'法律文书训练数据',secondary:'律所/法务系统集成',tertiary:'司法管辖区专属模型'},
   sales:     {primary:'CRM数据深度集成',secondary:'销售成功率数据闭环',tertiary:'行业专属话术库'},
   hr:        {primary:'简历/职位Match数据',secondary:'ATS深度集成',tertiary:'企业文化适配算法'},
+  // ── 12 product-track keys (mapping from product tracks to VC analysis data)
+  social:       {primary:'社交关系图谱数据护城河（行为数据飞轮）',secondary:'网络效应：用户越多推荐越准',tertiary:'品牌信任度与隐私承诺'},
+  emotion:      {primary:'循证疗法知识图谱+临床数据壁垒',secondary:'高情感依赖=极高转换成本',tertiary:'医疗/保险合规认证'},
+  content:      {primary:'品牌声音克隆数据+微调模型专有性',secondary:'企业工作流深度集成切换成本',tertiary:'内容效果A/B数据闭环'},
+  enterprise:   {primary:'私有企业知识库沉淀+工作流自动化深度',secondary:'SOC2合规+IT采购锁定',tertiary:'NRR>130%→扩展销售飞轮'},
+  productivity: {primary:'跨工具上下文数据积累（任务+会议+文档）',secondary:'工具集成生态粘性（200+连接）',tertiary:'团队协作网络效应'},
+  entertainment:{primary:'玩家行为数据驱动叙事训练（专有数据集）',secondary:'情感记忆=极高情感转换成本',tertiary:'创作者内容生态'},
+  retail:       {primary:'商品销售+定价历史数据飞轮',secondary:'ERP/WMS系统深度集成',tertiary:'动态定价算法迭代护城河'},
+  professional: {primary:'专业文书领域预训练数据+司法管辖区模型',secondary:'律所/会计系统深度集成',tertiary:'专业资质合规认证壁垒'},
 };
 
 const COMP_MATRIX = {
@@ -9834,7 +9861,7 @@ function renderDetailAccordion(d, t, pmf, pricing, funding, team) {
   const moat = MOAT[d.track] || {};
   const ue = UNIT_ECON[d.track] || UNIT_ECON.infra;
   const comps = COMPETITORS_V2[d.track] || [];
-  const compRows = comps.slice(0,4).map(c=>`<tr><td><b>${c.name}</b></td><td>${c.desc||'—'}</td><td>${c.diff||'—'}</td></tr>`).join('');
+  const compRows = comps.slice(0,4).map(c=>`<tr><td><b>${c.name}</b></td><td>${c.intro||c.desc||'—'}</td><td>${c.diff||'—'}</td></tr>`).join('');
   const rounds = ((funding||{}).rounds||[]).map(r=>`<tr><td>${r.round}</td><td>${r.amount}</td><td>${(r.investors||[]).join(', ')}</td><td>${r.date||'—'}</td></tr>`).join('');
   const risks = (RISKS[d.track]||[]).map(r=>`<li><span class="rpt-chip-rpt rpt-chip-red">风险</span> ${typeof r==='object'?r.text||String(r):r}</li>`).join('');
   const opps  = (OPPS[d.track]||[]).map(o=>`<li><span class="rpt-chip-rpt rpt-chip-green">机会</span> ${typeof o==='object'?o.text||String(o):o}</li>`).join('');
