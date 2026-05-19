@@ -275,6 +275,13 @@ function renderPage(art){
       <span class="kp-text">${kp}</span>
     </li>`).join('');
 
+  // Full content — pre-computed to avoid triple-nested template literal
+  const fullContentHtml = art.fullContent && art.fullContent.length
+    ? '<div class="art-divider"></div><div class="art-full-content"><div class="section-label" style="margin-bottom:20px">文章内容</div>'
+      + art.fullContent.map(s => '<div class="art-fc-section"><div class="art-fc-h">' + s.h + '</div><p class="art-fc-p">' + s.p + '</p></div>').join('')
+      + '</div>'
+    : '<div class="art-divider"></div><div style="margin-bottom:36px"><div class="section-label">文章摘要</div><p class="art-summary-text">' + art.summary + '</p></div>';
+
   // Related articles
   const related = getRelated(art);
   const relHTML = related.map(r => {
@@ -326,21 +333,7 @@ function renderPage(art){
       </div>
     </div>
 
-    ${art.fullContent && art.fullContent.length ? `
-    <div class="art-divider"></div>
-    <div class="art-full-content">
-      <div class="section-label" style="margin-bottom:20px">文章内容</div>
-      ${art.fullContent.map(s => `
-        <div class="art-fc-section">
-          <div class="art-fc-h">${s.h}</div>
-          <p class="art-fc-p">${s.p}</p>
-        </div>`).join('')}
-    </div>` : `
-    <div class="art-divider"></div>
-    <div style="margin-bottom:36px">
-      <div class="section-label">文章摘要</div>
-      <p class="art-summary-text">${art.summary}</p>
-    </div>`}
+    ${fullContentHtml}
 
     ${art.originalUrl && art.originalUrl !== '#' ? `
     <div style="margin-bottom:40px">
