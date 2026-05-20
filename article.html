@@ -82,9 +82,15 @@ main{max-width:720px;margin:0 auto;padding:100px 24px 80px}
 .summary-desc{font-size:11px;color:var(--muted);font-style:italic}
 .summary-kp{margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid rgba(99,102,241,.15)}
 .summary-ai-text{font-size:.95rem;color:var(--muted2);line-height:1.9;margin-bottom:20px}
-.expand-btn{width:100%;padding:10px;border-radius:10px;border:1px dashed rgba(99,102,241,.35);background:transparent;color:var(--accent);font-size:.82rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px}
-.expand-btn:hover{border-color:var(--accent);background:rgba(99,102,241,.06)}
-.fc-collapse{display:none;margin-top:20px}
+.oneliner-card{background:rgba(99,102,241,.1);border-left:3px solid #6366f1;border-radius:0 10px 10px 0;padding:14px 16px;margin-bottom:20px}
+.oneliner-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#6366f1;font-weight:700;display:block;margin-bottom:6px}
+.oneliner-text{font-size:.95rem;color:#e0e7ff;line-height:1.7;font-weight:500}
+.sect-divider{display:flex;align-items:center;gap:16px;margin:28px 0}
+.sect-divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.35),transparent)}
+.sect-divider-label{font-size:11px;font-weight:700;color:var(--muted2);letter-spacing:2px;white-space:nowrap;padding:0 4px}
+.deepdive-section{margin-bottom:8px}
+.deepdive-header{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.deepdive-count{font-size:11px;color:var(--muted);background:rgba(99,102,241,.12);border-radius:8px;padding:2px 8px}
 
 /* 深度解读内容（折叠区） */
 .art-fc-section{margin-bottom:28px}
@@ -188,7 +194,7 @@ function renderPage(art){
   document.title = art.title + ' — AI Horizon Matrix';
 
   // Nav orig button
-  var hasUrl = art.originalUrl && art.originalUrl !== '#';
+  var hasUrl = !!art.originalUrl;
   var origBtn = document.getElementById('origBtn');
   if(hasUrl){ origBtn.href = art.originalUrl; origBtn.style.display = 'flex'; }
   else { origBtn.style.display = 'none'; }
@@ -219,14 +225,22 @@ function renderPage(art){
     return '<li><div class="kp-marker">'+(i+1)+'</div><span class="kp-text">'+kp+'</span></li>';
   }).join('');
 
-  // Expandable fullContent (深度解读)
-  var expandBlock = '';
-  if(art.fullContent && art.fullContent.length){
-    var fcHtml = art.fullContent.map(function(s){
+  // One-liner core conclusion card
+  var oneLinerHtml = art.oneLiner
+    ? '<div class="oneliner-card"><span class="oneliner-label">💡 核心结论</span><p class="oneliner-text">'+art.oneLiner+'</p></div>'
+    : '';
+
+  // Deep dive: fullArticle all sections, fully expanded, no collapse
+  var deepDiveSectionHtml = '';
+  if(art.fullArticle && art.fullArticle.length){
+    var sectHtml = art.fullArticle.map(function(s){
       return '<div class="art-fc-section"><div class="art-fc-h">'+s.h+'</div><p class="art-fc-p">'+s.p+'</p></div>';
     }).join('');
-    expandBlock = '<button class="expand-btn" id="expandBtn" onclick="toggleExpand(this)">展开深度解读 ▾</button>'
-      + '<div class="fc-collapse" id="fcCollapse">'+fcHtml+'</div>';
+    deepDiveSectionHtml = '<div class="sect-divider"><div class="sect-divider-line"></div><div class="sect-divider-label">📖 深度解读</div><div class="sect-divider-line"></div></div>'
+      + '<div class="deepdive-section">'
+      + '<div class="deepdive-header"><span class="section-label">深度解读</span>'
+      + '<span class="deepdive-count">'+art.fullArticle.length+' 个章节</span></div>'
+      + sectHtml + '</div>';
   }
 
   // Part 2: orig card
@@ -293,13 +307,14 @@ function renderPage(art){
         <span class="summary-badge">⚡ AI 提炼</span>
         <span class="summary-desc">快速掌握核心观点</span>
       </div>
+      ${oneLinerHtml}
       <div class="summary-kp">
         <div class="section-label" style="margin-bottom:12px">核心观点</div>
         <ul class="key-points">${kpsHtml}</ul>
       </div>
       <p class="summary-ai-text">${art.summary}</p>
-      ${expandBlock}
     </div>
+    ${deepDiveSectionHtml}
     <div class="orig-divider">
       <div class="orig-divider-line"></div>
       <div class="orig-divider-label">📖 阅读原文</div>
@@ -340,12 +355,6 @@ window.toggleSave = function(){
   updateSaveBtn();
 };
 
-window.toggleExpand = function(btn){
-  var fc = document.getElementById('fcCollapse');
-  var hidden = fc.style.display === 'none' || fc.style.display === '';
-  fc.style.display = hidden ? 'block' : 'none';
-  btn.textContent = hidden ? '收起深度解读 ▴' : '展开深度解读 ▾';
-};
 
 window.shareArticle = function(){
   const btn = document.getElementById('shareBtn');
