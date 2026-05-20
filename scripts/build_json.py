@@ -48,12 +48,11 @@ def growth_score(p):
 # ── Deduplication ─────────────────────────────────────────────────────────────
 
 def url_key(url):
-    """Normalize URL to root domain for dedup."""
+    """Normalize full URL path for dedup (not just domain)."""
     url = url.lower().strip().rstrip("/")
     url = re.sub(r"^https?://", "", url)
     url = re.sub(r"^www\.", "", url)
-    parts = url.split("/")
-    return parts[0] if parts else url
+    return url  # keep full path so github.com/a/b ≠ github.com/c/d
 
 
 def dedup(products):
