@@ -141,6 +141,33 @@ footer .logo-text{font-size:1rem;font-weight:800;background:var(--g1);-webkit-ba
   main{padding:80px 16px 60px}
   .art-cover{height:150px}
 }
+
+.community-fab{position:fixed;right:24px;bottom:80px;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#07c160,#0a9c4c);border:none;color:#fff;font-size:22px;cursor:pointer;z-index:1900;box-shadow:0 4px 16px rgba(7,193,96,.45);transition:transform .2s,box-shadow .2s;display:flex;align-items:center;justify-content:center}
+.community-fab:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(7,193,96,.6)}
+.community-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:3500;backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .25s}
+.community-overlay.active{opacity:1;pointer-events:all}
+.community-modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.96);z-index:3501;background:var(--bg2,#1a1a2e);border:1px solid var(--border,rgba(255,255,255,.08));border-radius:20px;padding:32px 28px 28px;width:340px;max-width:92vw;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+.community-modal.active{opacity:1;pointer-events:all;transform:translate(-50%,-50%) scale(1)}
+.community-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted2,#6b7280);font-size:18px;cursor:pointer;padding:4px 8px;border-radius:8px;transition:color .2s}
+.community-close:hover{color:#fff}
+.community-header{text-align:center;margin-bottom:20px}
+.community-icon{font-size:36px;margin-bottom:8px}
+.community-title{font-size:1.1rem;font-weight:700;color:#fff;margin:0 0 6px}
+.community-subtitle{font-size:.85rem;color:var(--muted2,#6b7280);margin:0}
+.community-qr-wrap{text-align:center;margin-bottom:16px}
+.community-qr{width:160px;height:160px;border-radius:12px;background:#fff;padding:6px;object-fit:contain}
+.community-qr-tip{font-size:.78rem;color:var(--muted2,#6b7280);margin:8px 0 0}
+.community-steps{background:rgba(255,255,255,.04);border-radius:12px;padding:14px 16px;margin-bottom:16px;display:flex;flex-direction:column;gap:8px}
+.community-step{font-size:.82rem;color:var(--muted2,#9ca3af)}
+.community-stats{display:flex;justify-content:space-around;border-top:1px solid var(--border,rgba(255,255,255,.08));padding-top:16px}
+.community-stat{text-align:center}
+.community-stat-num{display:block;font-size:.95rem;font-weight:700;color:#a5b4fc}
+.community-stat-label{font-size:.72rem;color:var(--muted2,#6b7280)}
+@media(max-width:600px){
+  .community-modal{left:0;top:auto;bottom:0;transform:translateY(6%);border-radius:20px 20px 0 0;width:100%;max-width:100%;padding:28px 20px 36px}
+  .community-modal.active{transform:translateY(0)}
+  .community-fab{right:16px;bottom:72px}
+}
 </style>
 </head>
 <body>
@@ -159,6 +186,7 @@ footer .logo-text{font-size:1rem;font-weight:800;background:var(--g1);-webkit-ba
     <span>行业洞察</span>
   </a>
   <div class="nav-actions">
+    <button class="nav-btn" onclick="openCommunityModal()" title="加入社群">💬</button>
     <button class="nav-btn" id="saveBtn" title="收藏" onclick="toggleSave()">🔖</button>
     <button class="nav-btn" id="shareBtn" title="复制链接" onclick="shareArticle()">⬡</button>
     <a class="nav-btn" id="origBtn" title="阅读原文" href="#" target="_blank" rel="noopener">↗</a>
@@ -394,6 +422,46 @@ const id = params.get('id');
 const art = ARTICLES.find(function(a){ return a.id === id; });
 if(art) renderPage(art);
 else renderNotFound(id);
+</script>
+
+<button class="community-fab" onclick="openCommunityModal()" title="加入社群">💬</button>
+
+<div class="community-overlay" id="communityOverlay" onclick="closeCommunityModal()"></div>
+<div class="community-modal" id="communityModal">
+  <button class="community-close" onclick="closeCommunityModal()">✕</button>
+  <div class="community-header">
+    <div class="community-icon">💬</div>
+    <h3 class="community-title">加入 AI Horizon 社群</h3>
+    <p class="community-subtitle">与 AI 从业者一起，追踪前沿动态</p>
+  </div>
+  <div class="community-qr-wrap">
+    <img class="community-qr" src="assets/community-qr.png" alt="微信扫码入群">
+    <p class="community-qr-tip">微信扫一扫入群</p>
+  </div>
+  <div class="community-steps">
+    <div class="community-step">① 微信扫描上方二维码</div>
+    <div class="community-step">② 添加后备注「AI Horizon」</div>
+    <div class="community-step">③ 等待管理员拉入群</div>
+  </div>
+  <div class="community-stats">
+    <div class="community-stat"><span class="community-stat-num">1000+</span><span class="community-stat-label">社群成员</span></div>
+    <div class="community-stat"><span class="community-stat-num">日更</span><span class="community-stat-label">前沿资讯</span></div>
+    <div class="community-stat"><span class="community-stat-num">免费</span><span class="community-stat-label">永久免费</span></div>
+  </div>
+</div>
+
+<script>
+function openCommunityModal(){
+  document.getElementById('communityOverlay').classList.add('active');
+  document.getElementById('communityModal').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeCommunityModal(){
+  document.getElementById('communityOverlay').classList.remove('active');
+  document.getElementById('communityModal').classList.remove('active');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCommunityModal();});
 </script>
 </body>
 </html>
