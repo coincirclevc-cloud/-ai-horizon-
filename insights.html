@@ -198,6 +198,15 @@ footer .logo-text{font-size:1.2rem;font-weight:800;background:var(--g1);-webkit-
 <script>
 (function(){
 
+let insightRegion = 'all';
+let insightTopics = [];
+let insightSort = 'latest';
+let insightPage = 1;
+const PAGE_SIZE = 9;
+let savedArticles = JSON.parse(localStorage.getItem('ahm_saved_arts')||'[]');
+
+function getTopicStyle(t){ return TOPIC_META[t]||{label:t,color:'rgba(99,102,241,.18)',border:'rgba(99,102,241,.5)',text:'#a5b4fc'}; }
+
 function filterArticles(){
   return ARTICLES
     .filter(a => insightRegion==='all' || a.region===insightRegion)
