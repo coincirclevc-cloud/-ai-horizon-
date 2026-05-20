@@ -246,10 +246,10 @@ function renderPage(art){
   // Part 2: orig card
   var sourceMetaHtml = (art.author ? art.author + ' · ' : '') + art.publishDate;
   var ctaHtml = hasUrl
-    ? '<a class="orig-cta-btn" href="'+art.originalUrl+'" target="_blank" rel="noopener">前往原文阅读 ↗</a>'
+    ? '<a class="orig-cta-btn" href="'+art.originalUrl+'" target="_blank" rel="noopener">前往原文来源 · '+art.source+' ↗</a>'
     : '<div class="orig-cta-btn orig-cta-disabled">原文链接整理中</div>';
   var noteHtml = hasUrl
-    ? '预计 '+art.readTime+' 分钟 · 将在新标签页打开'
+    ? art.source+' · 将在新标签页打开'
     : '可关注 '+art.source+' 官方渠道获取原文';
   var origCardHtml = '<div class="orig-card">'
     + '<div class="orig-source-row">'
